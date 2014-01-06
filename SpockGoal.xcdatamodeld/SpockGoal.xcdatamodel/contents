@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13A603" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="ASGoal" representedClassName="ASGoal" syncable="YES">
+        <attribute name="assumedFinishTime" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="assumedStartTime" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="createdDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="friday" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="monday" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="orderingValue" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="remindMe" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="saturday" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="sunday" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="thursday" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tuesday" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="wednesday" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="records" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ASRecord" inverseName="goal" inverseEntity="ASRecord" syncable="YES"/>
+    </entity>
+    <entity name="ASRecord" representedClassName="ASRecord" syncable="YES">
+        <attribute name="createdDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="quality" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="realFinishTime" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="realStartTime" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="goal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ASGoal" inverseName="records" inverseEntity="ASGoal" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ASGoal" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ASRecord" positionX="0" positionY="0" width="0" height="0"/>
+    </elements>
+</model>
