@@ -7,14 +7,15 @@
 //
 
 #import "ASGoal.h"
+#import "ASRecord.h"
 
 
 @implementation ASGoal
 
 @dynamic title;
 @dynamic createdDate;
-@dynamic assumedStartTime;
-@dynamic assumedFinishTime;
+@dynamic everydayFinishAt;
+@dynamic everydayStartAt;
 @dynamic remindMe;
 @dynamic monday;
 @dynamic tuesday;
@@ -25,5 +26,19 @@
 @dynamic sunday;
 @dynamic orderingValue;
 @dynamic records;
+
+- (float)accumulatedHours
+{
+    float resultFloat = 0.0;
+    NSArray *tmpRecords = [[self records] allObjects];
+    ASRecord *record = nil;
+    
+    for (int i = 0; i < [tmpRecords count]; i++) {
+        record = [tmpRecords objectAtIndex:i];
+        resultFloat += [record duration];
+    }
+    
+    return resultFloat;
+}
 
 @end

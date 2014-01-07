@@ -7,13 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
 @class ASGoal;
+@class ASRecord;
 
 @interface ASGoalStore : NSObject
 
 {
     NSMutableArray *allGoals;
+    NSManagedObjectContext *context;
+    NSManagedObjectModel *model;
 }
 
 // Notice that this is a class method and prefixed with a + instead of a -
@@ -21,5 +25,7 @@
 
 - (NSArray *)allGoals;
 - (ASGoal *)createGoal;
+- (ASGoal *)createRandomGoal;
+- (ASRecord *)createRandomRecordForGoal:(ASGoal *)goal;
 
 @end

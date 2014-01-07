@@ -12,12 +12,15 @@
 
 @implementation ASRecord
 
-@dynamic realStartTime;
-@dynamic realFinishTime;
+@dynamic realStartAt;
+@dynamic realFinishAt;
 @dynamic quality;
 @dynamic note;
 @dynamic duration;
 @dynamic createdDate;
+@dynamic createdMonth;
+@dynamic createdYear;
+@dynamic accuracy;
 @dynamic goal;
 
 @end

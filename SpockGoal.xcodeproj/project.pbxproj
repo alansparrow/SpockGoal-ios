@@ -22,9 +22,13 @@
 		D83DD09B187B3C330092D155 /* ASMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D83DD09A187B3C330092D155 /* ASMainViewController.m */; };
 		D83DD11F187B4BFA0092D155 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D83DD11E187B4BFA0092D155 /* CoreData.framework */; };
 		D83DD122187B4C210092D155 /* SpockGoal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D83DD120187B4C210092D155 /* SpockGoal.xcdatamodeld */; };
-		D83DD125187B51010092D155 /* ASGoal.m in Sources */ = {isa = PBXBuildFile; fileRef = D83DD124187B51010092D155 /* ASGoal.m */; };
-		D83DD128187B51020092D155 /* ASRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D83DD127187B51020092D155 /* ASRecord.m */; };
 		D83DD12B187B52320092D155 /* ASGoalStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D83DD12A187B52320092D155 /* ASGoalStore.m */; };
+		D83DD12F187B58580092D155 /* ASTimeProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = D83DD12E187B58580092D155 /* ASTimeProcess.m */; };
+		D83DD138187C30B90092D155 /* ASRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D83DD137187C30B90092D155 /* ASRecord.m */; };
+		D83DD13B187C30BA0092D155 /* ASGoal.m in Sources */ = {isa = PBXBuildFile; fileRef = D83DD13A187C30BA0092D155 /* ASGoal.m */; };
+		D8F9C6D7187C72440033B5C4 /* ASGoalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F9C6D6187C72440033B5C4 /* ASGoalCell.m */; };
+		D8F9C6D9187C72650033B5C4 /* ASGoalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8F9C6D8187C72650033B5C4 /* ASGoalCell.xib */; };
+		D8F9C6DC187C7AF70033B5C4 /* ASRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F9C6DB187C7AF70033B5C4 /* ASRandom.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,12 +62,19 @@
 		D83DD09A187B3C330092D155 /* ASMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASMainViewController.m; path = ../ASMainViewController.m; sourceTree = "<group>"; };
 		D83DD11E187B4BFA0092D155 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		D83DD121187B4C210092D155 /* SpockGoal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpockGoal.xcdatamodel; sourceTree = "<group>"; };
-		D83DD123187B51010092D155 /* ASGoal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASGoal.h; path = ../ASGoal.h; sourceTree = "<group>"; };
-		D83DD124187B51010092D155 /* ASGoal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASGoal.m; path = ../ASGoal.m; sourceTree = "<group>"; };
-		D83DD126187B51020092D155 /* ASRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASRecord.h; path = ../ASRecord.h; sourceTree = "<group>"; };
-		D83DD127187B51020092D155 /* ASRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASRecord.m; path = ../ASRecord.m; sourceTree = "<group>"; };
 		D83DD129187B52320092D155 /* ASGoalStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASGoalStore.h; sourceTree = "<group>"; };
 		D83DD12A187B52320092D155 /* ASGoalStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGoalStore.m; sourceTree = "<group>"; };
+		D83DD12D187B58580092D155 /* ASTimeProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASTimeProcess.h; sourceTree = "<group>"; };
+		D83DD12E187B58580092D155 /* ASTimeProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASTimeProcess.m; sourceTree = "<group>"; };
+		D83DD136187C30B90092D155 /* ASRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASRecord.h; sourceTree = "<group>"; };
+		D83DD137187C30B90092D155 /* ASRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASRecord.m; sourceTree = "<group>"; };
+		D83DD139187C30BA0092D155 /* ASGoal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASGoal.h; sourceTree = "<group>"; };
+		D83DD13A187C30BA0092D155 /* ASGoal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGoal.m; sourceTree = "<group>"; };
+		D8F9C6D5187C72440033B5C4 /* ASGoalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASGoalCell.h; sourceTree = "<group>"; };
+		D8F9C6D6187C72440033B5C4 /* ASGoalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGoalCell.m; sourceTree = "<group>"; };
+		D8F9C6D8187C72650033B5C4 /* ASGoalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASGoalCell.xib; sourceTree = "<group>"; };
+		D8F9C6DA187C7AF70033B5C4 /* ASRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASRandom.h; sourceTree = "<group>"; };
+		D8F9C6DB187C7AF70033B5C4 /* ASRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASRandom.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,12 +136,13 @@
 		D83DD070187B3BEC0092D155 /* SpockGoal */ = {
 			isa = PBXGroup;
 			children = (
+				D83DD07C187B3BEC0092D155 /* Images.xcassets */,
 				D83DD079187B3BEC0092D155 /* ASAppDelegate.h */,
 				D83DD07A187B3BEC0092D155 /* ASAppDelegate.m */,
 				D83DD09D187B3C400092D155 /* Model */,
 				D83DD09E187B3C440092D155 /* View */,
 				D83DD09C187B3C3A0092D155 /* Controller */,
-				D83DD07C187B3BEC0092D155 /* Images.xcassets */,
+				D83DD12C187B57D80092D155 /* Utilities */,
 				D83DD071187B3BEC0092D155 /* Supporting Files */,
 			);
 			path = SpockGoal;
@@ -178,10 +190,10 @@
 			isa = PBXGroup;
 			children = (
 				D83DD120187B4C210092D155 /* SpockGoal.xcdatamodeld */,
-				D83DD123187B51010092D155 /* ASGoal.h */,
-				D83DD124187B51010092D155 /* ASGoal.m */,
-				D83DD126187B51020092D155 /* ASRecord.h */,
-				D83DD127187B51020092D155 /* ASRecord.m */,
+				D83DD139187C30BA0092D155 /* ASGoal.h */,
+				D83DD13A187C30BA0092D155 /* ASGoal.m */,
+				D83DD136187C30B90092D155 /* ASRecord.h */,
+				D83DD137187C30B90092D155 /* ASRecord.m */,
 				D83DD129187B52320092D155 /* ASGoalStore.h */,
 				D83DD12A187B52320092D155 /* ASGoalStore.m */,
 			);
@@ -191,8 +203,22 @@
 		D83DD09E187B3C440092D155 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D8F9C6D5187C72440033B5C4 /* ASGoalCell.h */,
+				D8F9C6D6187C72440033B5C4 /* ASGoalCell.m */,
+				D8F9C6D8187C72650033B5C4 /* ASGoalCell.xib */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		D83DD12C187B57D80092D155 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D83DD12D187B58580092D155 /* ASTimeProcess.h */,
+				D83DD12E187B58580092D155 /* ASTimeProcess.m */,
+				D8F9C6DA187C7AF70033B5C4 /* ASRandom.h */,
+				D8F9C6DB187C7AF70033B5C4 /* ASRandom.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +299,7 @@
 			files = (
 				D83DD075187B3BEC0092D155 /* InfoPlist.strings in Resources */,
 				D83DD07D187B3BEC0092D155 /* Images.xcassets in Resources */,
+				D8F9C6D9187C72650033B5C4 /* ASGoalCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,10 +320,13 @@
 			files = (
 				D83DD07B187B3BEC0092D155 /* ASAppDelegate.m in Sources */,
 				D83DD09B187B3C330092D155 /* ASMainViewController.m in Sources */,
+				D83DD13B187C30BA0092D155 /* ASGoal.m in Sources */,
 				D83DD12B187B52320092D155 /* ASGoalStore.m in Sources */,
-				D83DD125187B51010092D155 /* ASGoal.m in Sources */,
+				D83DD12F187B58580092D155 /* ASTimeProcess.m in Sources */,
 				D83DD077187B3BEC0092D155 /* main.m in Sources */,
-				D83DD128187B51020092D155 /* ASRecord.m in Sources */,
+				D83DD138187C30B90092D155 /* ASRecord.m in Sources */,
+				D8F9C6D7187C72440033B5C4 /* ASGoalCell.m in Sources */,
+				D8F9C6DC187C7AF70033B5C4 /* ASRandom.m in Sources */,
 				D83DD122187B4C210092D155 /* SpockGoal.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,6 +528,7 @@
 				D83DD095187B3BEC0092D155 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D83DD096187B3BEC0092D155 /* Build configuration list for PBXNativeTarget "SpockGoalTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +537,7 @@
 				D83DD098187B3BEC0092D155 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
