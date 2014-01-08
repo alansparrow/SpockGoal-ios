@@ -1,5 +1,5 @@
 //
-//  ASGoal.h
+//  ASGoalCopy.h
 //  SpockGoal
 //
 //  Created by Alan Sparrow on 1/8/14.
@@ -7,11 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
 
-@class ASRecord;
+@class ASGoal;
 
-@interface ASGoal : NSManagedObject <NSCopying>
+@interface ASGoalCopy : NSObject
 
 @property (nonatomic) NSTimeInterval createdDate;
 @property (nonatomic) NSTimeInterval everydayFinishAt;
@@ -26,17 +25,8 @@
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic) BOOL tuesday;
 @property (nonatomic) BOOL wednesday;
-@property (nonatomic, retain) NSSet *records;
 
-- (float)accumulatedHours;
-
-@end
-
-@interface ASGoal (CoreDataGeneratedAccessors)
-
-- (void)addRecordsObject:(ASRecord *)value;
-- (void)removeRecordsObject:(ASRecord *)value;
-- (void)addRecords:(NSSet *)values;
-- (void)removeRecords:(NSSet *)values;
+- (void)copyWith:(ASGoal *)g;
+- (id)initWith:(ASGoal *)g;
 
 @end

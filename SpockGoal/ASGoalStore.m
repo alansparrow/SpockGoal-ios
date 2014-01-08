@@ -102,28 +102,18 @@
 
 - (ASGoal *)createGoal
 {
-    /*
-     double order;
-     if ([allItems count] == 0) {
-     order = 1.0;
-     } else {
-     order = [[allItems lastObject] orderingValue] + 1.0;
-     }
-     NSLog(@"Adding after %d items, order = %.2f", [allItems count], order);
-     
-     BNRItem *p = [NSEntityDescription insertNewObjectForEntityForName:@"BNRItem"
-     inManagedObjectContext:context];
-     
-     [p setOrderingValue:order];
-     
-     [allItems addObject:p];
-     
-     return p;
-
-    */
-
+    double order;
+    if ([allGoals count] == 0) {
+        order = 1.0;
+    } else {
+        // Because when fetch from DB allGoals already been in order
+        order = [[allGoals lastObject] orderingValue] + 1.0;
+    }
     ASGoal *g = [NSEntityDescription insertNewObjectForEntityForName:@"ASGoal"
                                               inManagedObjectContext:context];
+    [g setOrderingValue:order];
+    [g setTitle:@"Creating goal..."]; // default for goal's title
+    
     [allGoals addObject:g];
     
     return g;
@@ -134,8 +124,8 @@
     
     ASRandom *random = [[ASRandom alloc] init];
     //ASTimeProcess *timeProcess = [[ASTimeProcess alloc] init];
-    ASGoal *g = [NSEntityDescription insertNewObjectForEntityForName:@"ASGoal"
-                                              inManagedObjectContext:context];
+    ASGoal *g = [self createGoal];
+    
     [g setTitle:[random randomGoalTitle]];
     [g setMonday:[random randomBoolean]];
     [g setTuesday:[random randomBoolean]];
@@ -148,7 +138,6 @@
     [g setEverydayStartAt:[[random randomTimePoint1] timeIntervalSinceReferenceDate]];
     [g setEverydayFinishAt:[[random randomTimePoint2] timeIntervalSinceReferenceDate]];
     
-    [allGoals addObject:g];
     return g;
 }
 
@@ -167,6 +156,12 @@
     return r;
 }
 
+- (void)removeGoal:(ASGoal *)g
+{
+    [context deleteObject:g];
+    [allGoals removeObjectIdenticalTo:g];
+}
+
 - (BOOL)saveChanges
 {
     NSError *error = nil;
@@ -175,6 +170,35 @@
         NSLog(@"Error saving: %@", [error localizedDescription]);
     }
     return successful;
+}
+
+- (void)moveGoalAtIndex:(int)from toIndex:(int)to
+{
+    if (from == to) {
+        return;
+    }
+    
+    ASGoal *g = [allGoals objectAtIndex:from];
+    [allGoals removeObjectAtIndex:from];
+    [allGoals insertObject:g atIndex:to];
+    
+    double lowerBound = 0.0;
+    if (to > 0) {
+        lowerBound = [[allGoals objectAtIndex:to-1] orderingValue];
+    } else {
+        lowerBound = [[allGoals objectAtIndex:1] orderingValue] - 2.0;
+    }
+    
+    double upperBound = 0.0;
+    if (to < [allGoals count] - 1) {
+        upperBound = [[allGoals objectAtIndex:to+1] orderingValue];
+    } else {
+        upperBound = [[allGoals objectAtIndex:to-1] orderingValue] + 2.0;
+    }
+    
+    double newOrderValue = (lowerBound + upperBound) / 2.0;
+    
+    [g setOrderingValue:newOrderValue];
 }
 
 

@@ -14,7 +14,7 @@
 #import "ASRecord.h"
 #import "ASGoalFormViewController.h"
 
-#define WSLog(...) NSLog(__VA_ARGS__)
+#define ASLog(...) NSLog(__VA_ARGS__)
 
 @implementation ASMainViewController
 
@@ -23,6 +23,7 @@
     // Call the superclass's designated initializer
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
+        /*
         for (int i = 0; i < 5; i++) {
             ASGoal *g = [[ASGoalStore sharedStore] createRandomGoal];
             
@@ -30,8 +31,42 @@
                 [[ASGoalStore sharedStore] createRandomRecordForGoal:g];
             }
         }
+        */
+        // Create a new bar button item that will send
+        // addNewGoal: to MainViewController
+        UINavigationItem *navItem = [self navigationItem];
+        [navItem setTitle:@"SpockGoal"];
+        UIBarButtonItem *bbi = [[UIBarButtonItem alloc]
+                                initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                target:self
+                                action:@selector(addNewGoal:)];
+        // Set this bar button item as the right item in the navigationItem
+        [[self navigationItem] setRightBarButtonItem:bbi];
+        [[self navigationItem] setLeftBarButtonItem:[self editButtonItem]];
+        
     }
     return self;
+}
+
+- (IBAction)addNewGoal:(id)sender
+{
+    ASGoal *newGoal = [[ASGoalStore sharedStore] createGoal];
+    
+    // New goal so initForGoal:nil
+    ASGoalFormViewController *gfc = [[ASGoalFormViewController alloc] initForGoal:newGoal
+                                     newGoal:YES];
+    [gfc setDismissBlock:^void{
+        [[self tableView] reloadData];
+    }];
+    
+    UINavigationController *navController = [[UINavigationController alloc]
+                                             initWithRootViewController:gfc];
+    [navController setModalPresentationStyle:UIModalPresentationFullScreen];
+    [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    
+    [self presentViewController:navController
+                       animated:YES
+                     completion:nil];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -78,35 +113,29 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    WSLog([NSString stringWithFormat:@"Selecting: %d row", selectingRow]);
-    /*
-    switch (buttonIndex) {
-        case 0:
-            WSLog(@"Clicked Start");
-            break;
-        case 1:
-            WSLog(@"Clicked Detail");
-            break;
-        case 2:
-            WSLog(@"Clicked Edit");
-            ASGoalFormController *gfc = [[ASGoalFormController alloc] init];
-            [[self navigationController] pushViewController:gfc animated:YES];
-            break;
-        case 3:
-            WSLog(@"Clicked Cancel");
-            break;
-        default:
-            break;
-    }*/
+    ASLog([NSString stringWithFormat:@"Selecting: %d row", selectingRow]);
     
     if (buttonIndex == 2) {
-        WSLog(@"Clicked Edit");
+        
+        ASLog(@"Clicked Edit");
         //ASGoalFormViewController *gfc = [[ASGoalFormViewController alloc] init];
         ASGoalFormViewController *gfc = [[ASGoalFormViewController alloc]
                                          initForGoal:[[[ASGoalStore sharedStore] allGoals]
-                                                      objectAtIndex:selectingRow]];
-        //ASGoalFormViewController *gfc1 = [[ASGoalFormViewController alloc] initForGoal:nil];
-        [[self navigationController] pushViewController:gfc animated:YES];
+                                                      objectAtIndex:selectingRow]
+                                         newGoal:NO];
+        [gfc setDismissBlock:^void{
+            [[self tableView] reloadData];
+        }];
+        
+        UINavigationController *navController = [[UINavigationController alloc]
+                                                 initWithRootViewController:gfc];
+        [navController setModalPresentationStyle:UIModalPresentationFullScreen];
+        [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+        
+        [self presentViewController:navController
+                           animated:YES
+                         completion:nil];
+
     }
 }
 
@@ -114,11 +143,40 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        ASGoalStore *gs = [ASGoalStore sharedStore];
+        NSArray *goals = [gs allGoals];
+        ASGoal *g = [goals objectAtIndex:[indexPath row]];
+        [gs removeGoal:g];
+        
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                         withRowAnimation:UITableViewRowAnimationFade];
+        
+    }
 }
 
+- (void)tableView:(UITableView *)tableView
+moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
+      toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    [[ASGoalStore sharedStore] moveGoalAtIndex:[sourceIndexPath row]
+                                       toIndex:[destinationIndexPath row]];
+}
 
-
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+    if (editing == YES) {
+        for (ASGoalCell *gc in [[self tableView] visibleCells]) {
+            [[gc accumulatedHourLabel] setHidden:YES];
+        }
+    } else {
+        for (ASGoalCell *gc in [[self tableView] visibleCells]) {
+            [[gc accumulatedHourLabel] setHidden:NO];
+        }
+    }
+    
+}
 
 - (void)viewDidLoad
 {
@@ -135,7 +193,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 70.0;
+    return 100.0;
 }
 
 @end

@@ -8,6 +8,9 @@
 
 #import "ASAppDelegate.h"
 #import "ASMainViewController.h"
+#import "ASGoalStore.h"
+
+#define ASLog(...) NSLog(__VA_ARGS__)
 
 @implementation ASAppDelegate
 
@@ -43,6 +46,13 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    BOOL success = [[ASGoalStore sharedStore] saveChanges];
+    if (success) {
+        ASLog(@"Saved all of the ASGoal");
+    } else {
+        ASLog(@"Could not save any of the ASGoal");
+    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application

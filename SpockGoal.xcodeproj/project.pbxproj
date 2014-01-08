@@ -31,6 +31,10 @@
 		D8F9C6F0187CAF0F0033B5C4 /* ASGoalFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8F9C6EE187CAF0F0033B5C4 /* ASGoalFormViewController.xib */; };
 		D8F9C6F3187CCD2A0033B5C4 /* ASRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F9C6F2187CCD2A0033B5C4 /* ASRecord.m */; };
 		D8F9C6F6187CCD2B0033B5C4 /* ASGoal.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F9C6F5187CCD2B0033B5C4 /* ASGoal.m */; };
+		D8F9C6FA187CD83C0033B5C4 /* ASTimePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F9C6F8187CD83C0033B5C4 /* ASTimePickerViewController.m */; };
+		D8F9C6FB187CD83C0033B5C4 /* ASTimePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8F9C6F9187CD83C0033B5C4 /* ASTimePickerViewController.xib */; };
+		D8F9C6FD187D62A50033B5C4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F9C6FC187D62A50033B5C4 /* QuartzCore.framework */; };
+		D8F9C700187D97D90033B5C4 /* ASGoalCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F9C6FF187D97D80033B5C4 /* ASGoalCopy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +84,12 @@
 		D8F9C6F2187CCD2A0033B5C4 /* ASRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASRecord.m; sourceTree = "<group>"; };
 		D8F9C6F4187CCD2B0033B5C4 /* ASGoal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASGoal.h; sourceTree = "<group>"; };
 		D8F9C6F5187CCD2B0033B5C4 /* ASGoal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGoal.m; sourceTree = "<group>"; };
+		D8F9C6F7187CD83C0033B5C4 /* ASTimePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASTimePickerViewController.h; sourceTree = "<group>"; };
+		D8F9C6F8187CD83C0033B5C4 /* ASTimePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASTimePickerViewController.m; sourceTree = "<group>"; };
+		D8F9C6F9187CD83C0033B5C4 /* ASTimePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASTimePickerViewController.xib; sourceTree = "<group>"; };
+		D8F9C6FC187D62A50033B5C4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D8F9C6FE187D97D80033B5C4 /* ASGoalCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASGoalCopy.h; sourceTree = "<group>"; };
+		D8F9C6FF187D97D80033B5C4 /* ASGoalCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGoalCopy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8F9C6FD187D62A50033B5C4 /* QuartzCore.framework in Frameworks */,
 				D83DD11F187B4BFA0092D155 /* CoreData.framework in Frameworks */,
 				D83DD06D187B3BEC0092D155 /* CoreGraphics.framework in Frameworks */,
 				D83DD06F187B3BEC0092D155 /* UIKit.framework in Frameworks */,
@@ -129,6 +140,7 @@
 		D83DD069187B3BEC0092D155 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D8F9C6FC187D62A50033B5C4 /* QuartzCore.framework */,
 				D83DD11E187B4BFA0092D155 /* CoreData.framework */,
 				D83DD06A187B3BEC0092D155 /* Foundation.framework */,
 				D83DD06C187B3BEC0092D155 /* CoreGraphics.framework */,
@@ -197,6 +209,8 @@
 				D83DD120187B4C210092D155 /* SpockGoal.xcdatamodeld */,
 				D8F9C6F4187CCD2B0033B5C4 /* ASGoal.h */,
 				D8F9C6F5187CCD2B0033B5C4 /* ASGoal.m */,
+				D8F9C6FE187D97D80033B5C4 /* ASGoalCopy.h */,
+				D8F9C6FF187D97D80033B5C4 /* ASGoalCopy.m */,
 				D8F9C6F1187CCD2A0033B5C4 /* ASRecord.h */,
 				D8F9C6F2187CCD2A0033B5C4 /* ASRecord.m */,
 				D83DD129187B52320092D155 /* ASGoalStore.h */,
@@ -214,6 +228,9 @@
 				D8F9C6EC187CAF0F0033B5C4 /* ASGoalFormViewController.h */,
 				D8F9C6ED187CAF0F0033B5C4 /* ASGoalFormViewController.m */,
 				D8F9C6EE187CAF0F0033B5C4 /* ASGoalFormViewController.xib */,
+				D8F9C6F7187CD83C0033B5C4 /* ASTimePickerViewController.h */,
+				D8F9C6F8187CD83C0033B5C4 /* ASTimePickerViewController.m */,
+				D8F9C6F9187CD83C0033B5C4 /* ASTimePickerViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -308,6 +325,7 @@
 				D83DD075187B3BEC0092D155 /* InfoPlist.strings in Resources */,
 				D83DD07D187B3BEC0092D155 /* Images.xcassets in Resources */,
 				D8F9C6D9187C72650033B5C4 /* ASGoalCell.xib in Resources */,
+				D8F9C6FB187CD83C0033B5C4 /* ASTimePickerViewController.xib in Resources */,
 				D8F9C6F0187CAF0F0033B5C4 /* ASGoalFormViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,7 +352,9 @@
 				D83DD077187B3BEC0092D155 /* main.m in Sources */,
 				D8F9C6EF187CAF0F0033B5C4 /* ASGoalFormViewController.m in Sources */,
 				D8F9C6F6187CCD2B0033B5C4 /* ASGoal.m in Sources */,
+				D8F9C6FA187CD83C0033B5C4 /* ASTimePickerViewController.m in Sources */,
 				D8F9C6D7187C72440033B5C4 /* ASGoalCell.m in Sources */,
+				D8F9C700187D97D90033B5C4 /* ASGoalCopy.m in Sources */,
 				D8F9C6DC187C7AF70033B5C4 /* ASRandom.m in Sources */,
 				D8F9C6F3187CCD2A0033B5C4 /* ASRecord.m in Sources */,
 				D83DD122187B4C210092D155 /* SpockGoal.xcdatamodeld in Sources */,

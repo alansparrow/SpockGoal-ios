@@ -27,5 +27,9 @@
 - (ASGoal *)createGoal;
 - (ASGoal *)createRandomGoal;
 - (ASRecord *)createRandomRecordForGoal:(ASGoal *)goal;
+- (void)removeGoal:(ASGoal *)g;
+- (void)moveGoalAtIndex:(int)from
+                toIndex:(int)to;
 
+- (BOOL)saveChanges;
 @end

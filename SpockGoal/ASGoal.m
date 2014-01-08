@@ -8,6 +8,7 @@
 
 #import "ASGoal.h"
 #import "ASRecord.h"
+#import "ASGoalStore.h"
 
 
 //#define WSLog(...) NSLog(__VA_ARGS__)
@@ -43,6 +44,27 @@
     }
     
     return resultFloat;
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    ASGoal *g = [[ASGoalStore sharedStore] createGoal]; // in case of subclass
+    [g setTitle:[self title]];
+    [g setCreatedDate:[self createdDate]];
+    [g setEverydayStartAt:[self everydayStartAt]];
+    [g setEverydayFinishAt:[self everydayFinishAt]];
+    [g setMonday:[self monday]];
+    [g setTuesday:[self tuesday]];
+    [g setWednesday:[self wednesday]];
+    [g setThursday:[self thursday]];
+    [g setFriday:[self friday]];
+    [g setSaturday:[self saturday]];
+    [g setSunday:[self sunday]];
+    [g setRemindMe:[self remindMe]];
+    [g setOrderingValue:[self orderingValue]];
+    [g setRecords:[self records]];
+    
+    return g;
 }
 
 @end

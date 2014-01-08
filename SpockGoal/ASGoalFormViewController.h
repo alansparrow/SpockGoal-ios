@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @class ASGoal;
+@class ASGoalCopy;
 
-@interface ASGoalFormViewController : UIViewController
+@interface ASGoalFormViewController : UIViewController <UITextFieldDelegate>
 {
     __weak IBOutlet UITextField *goalTitleTextField;
     __weak IBOutlet UIButton *monButton;
@@ -25,7 +26,11 @@
     __weak IBOutlet UIButton *sunButton;
     
     ASGoal *savedGoal;
+    ASGoalCopy *copyGoal;
 }
+
+@property (nonatomic, copy) void (^dismissBlock)(void);
+
 - (IBAction)monClick:(id)sender;
 - (IBAction)tueClick:(id)sender;
 - (IBAction)wedClick:(id)sender;
@@ -36,7 +41,7 @@
 - (IBAction)finishAtClick:(id)sender;
 - (IBAction)sunClick:(id)sender;
 
-- (id)initForGoal:(ASGoal *)goal;
+- (id)initForGoal:(ASGoal *)goal newGoal:(BOOL)isNew;
 
 
 @end
