@@ -200,7 +200,7 @@
 {
     [super viewWillAppear:YES];
     
-    if (![[savedGoal title] isEqual:@"Creating goal..."]) {
+    if (![[savedGoal title] isEqual:@""]) {
         ASTimeProcess *timeProcess = [[ASTimeProcess alloc] init];
         
         NSArray *colors = [NSArray arrayWithObjects:[UIColor grayColor],

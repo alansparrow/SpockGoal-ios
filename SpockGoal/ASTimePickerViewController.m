@@ -8,6 +8,7 @@
 
 #import "ASTimePickerViewController.h"
 #import "ASGoal.h"
+#import "ASTimeProcess.h"
 
 @interface ASTimePickerViewController ()
 
@@ -51,6 +52,10 @@
     
     [savedGoal setEverydayStartAt:[date1 timeIntervalSinceReferenceDate]];
     [savedGoal setEverydayFinishAt:[date2 timeIntervalSinceReferenceDate]];
+    
+    ASTimeProcess *timeProcess = [[ASTimeProcess alloc] init];
+    NSLog(@"%@", [timeProcess timeIntervalToString:[savedGoal everydayStartAt]]);
+    NSLog(@"%@", [timeProcess timeIntervalToString:[savedGoal everydayFinishAt]]);
 }
 
 - (void)viewDidLoad

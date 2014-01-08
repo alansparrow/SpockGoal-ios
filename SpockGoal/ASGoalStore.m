@@ -112,7 +112,8 @@
     ASGoal *g = [NSEntityDescription insertNewObjectForEntityForName:@"ASGoal"
                                               inManagedObjectContext:context];
     [g setOrderingValue:order];
-    [g setTitle:@"Creating goal..."]; // default for goal's title
+    [g setTitle:@""]; // default for goal's title
+    [g setCreatedDate:[NSDate timeIntervalSinceReferenceDate]];
     
     [allGoals addObject:g];
     
@@ -160,16 +161,48 @@
 {
     [context deleteObject:g];
     [allGoals removeObjectIdenticalTo:g];
+    [self saveChanges];
 }
 
 - (BOOL)saveChanges
 {
+    // Remove all empty and time failed goal
+    // In case of sudden suspend
+    for (ASGoal *g in [self allGoals]) {
+        if ([[g title] isEqual:@""] || ![self checkTimeOf:g]) {
+            if ([[g records] count] == 0) {
+                [context deleteObject:g];
+                [allGoals removeObjectIdenticalTo:g];
+            }
+        }
+    }
+    
     NSError *error = nil;
     BOOL successful = [context save:&error];
     if (!successful) {
         NSLog(@"Error saving: %@", [error localizedDescription]);
     }
     return successful;
+}
+
+- (BOOL)checkTimeOf:(ASGoal *)g
+{
+    BOOL resultBoolean = NO;
+    
+    ASTimeProcess *timeProcess = [[ASTimeProcess alloc] init];
+    NSInteger tp1 = [timeProcess
+                     timePointToInt:
+                     [timeProcess dateFromTimeInterval:[g everydayStartAt]]
+                     ];
+    NSInteger tp2 = [timeProcess
+                     timePointToInt:
+                     [timeProcess dateFromTimeInterval:[g everydayFinishAt]]
+                     ];
+    if (tp1 <= tp2) {
+        resultBoolean = YES;
+    }
+    
+    return resultBoolean;
 }
 
 - (void)moveGoalAtIndex:(int)from toIndex:(int)to
