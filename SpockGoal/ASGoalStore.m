@@ -10,6 +10,7 @@
 #import "ASGoal.h"
 #import "ASRecord.h"
 #import "ASRandom.h"
+#import "ASTimeProcess.h"
 
 @implementation ASGoalStore
 
@@ -132,6 +133,7 @@
 {
     
     ASRandom *random = [[ASRandom alloc] init];
+    //ASTimeProcess *timeProcess = [[ASTimeProcess alloc] init];
     ASGoal *g = [NSEntityDescription insertNewObjectForEntityForName:@"ASGoal"
                                               inManagedObjectContext:context];
     [g setTitle:[random randomGoalTitle]];
@@ -143,8 +145,8 @@
     [g setSaturday:[random randomBoolean]];
     [g setSunday:[random randomBoolean]];
     [g setRemindMe:[random randomBoolean]];
-    [g setEverydayStartAt:[random randomTimePoint1]];
-    [g setEverydayFinishAt:[random randomTimePoint2]];
+    [g setEverydayStartAt:[[random randomTimePoint1] timeIntervalSinceReferenceDate]];
+    [g setEverydayFinishAt:[[random randomTimePoint2] timeIntervalSinceReferenceDate]];
     
     [allGoals addObject:g];
     return g;

@@ -2,7 +2,7 @@
 //  ASGoal.m
 //  SpockGoal
 //
-//  Created by Alan Sparrow on 1/7/14.
+//  Created by Alan Sparrow on 1/8/14.
 //  Copyright (c) 2014 Alan Sparrow. All rights reserved.
 //
 
@@ -10,21 +10,24 @@
 #import "ASRecord.h"
 
 
+//#define WSLog(...) NSLog(__VA_ARGS__)
+#define WSLog(...) do {} while(0)
+
 @implementation ASGoal
 
-@dynamic title;
 @dynamic createdDate;
 @dynamic everydayFinishAt;
 @dynamic everydayStartAt;
-@dynamic remindMe;
-@dynamic monday;
-@dynamic tuesday;
-@dynamic wednesday;
-@dynamic thursday;
 @dynamic friday;
+@dynamic monday;
+@dynamic orderingValue;
+@dynamic remindMe;
 @dynamic saturday;
 @dynamic sunday;
-@dynamic orderingValue;
+@dynamic thursday;
+@dynamic title;
+@dynamic tuesday;
+@dynamic wednesday;
 @dynamic records;
 
 - (float)accumulatedHours
@@ -35,6 +38,7 @@
     
     for (int i = 0; i < [tmpRecords count]; i++) {
         record = [tmpRecords objectAtIndex:i];
+        WSLog(@"%f", [record duration]);
         resultFloat += [record duration];
     }
     

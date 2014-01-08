@@ -13,8 +13,9 @@
 
 @interface ASTimeProcess : NSObject
 
-
+- (NSDate *)stringToDate:(NSString *)str;
 - (int)timePointToInt:(NSDate *)date;
+- (NSString *)timeIntervalToString:(NSTimeInterval)timeInterval;
 - (NSString *)dateToString:(NSDate *)date;
 - (float)durationFrom:(NSDate *)startPoint To:(NSDate *)finishPoint;
 - (NSInteger)weekdayFromDate:(NSDate *)date; // 1-7

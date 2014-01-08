@@ -12,24 +12,40 @@
 
 @implementation ASTimeProcess
 
-- (int)timePointToInt:(NSDate *)date
+- (NSDate *)stringToDate:(NSString *)str
 {
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:(NSWeekdayCalendarUnit |
-                                                         NSDayCalendarUnit |
-                                                         NSMonthCalendarUnit |
-                                                         NSYearCalendarUnit |
-                                                         NSHourCalendarUnit |
-                                                         NSMinuteCalendarUnit)
-                                               fromDate:date];
+    NSDate *resultDate = nil;
     
-    NSInteger hour = [components hour];
-    NSInteger minute = [components minute];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterNoStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    resultDate = [dateFormatter dateFromString:str];
     
-    int resultInt = hour*60 + minute;
-    NSLog(@"%d : %d", hour, minute);
+    return resultDate;
+}
+
+- (NSString *)timeIntervalToString:(NSTimeInterval)timeInterval;
+{
+    NSString *resultString = nil;
     
-    return resultInt;
+    NSDate *date = [self dateFromTimeInterval:timeInterval];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterNoStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+
+    resultString = [dateFormatter stringFromDate:date];
+    
+    return resultString;
+}
+
+- (NSString *)intToTimePoint:(NSInteger)intValue
+{
+    NSString *resultString = nil;
+    int hour = intValue / 60;
+    int minute = intValue % 60;
+    resultString = [NSString stringWithFormat:@"%2d:%2d", hour, minute];
+    
+    return resultString;
 }
 
 - (NSString *)dateToString:(NSDate *)date
@@ -166,16 +182,38 @@
     return resultInt;
 }
 
+- (NSInteger)timePointToInt:(NSDate *)date
+{
+    NSInteger resultInt = 0;
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSWeekdayCalendarUnit |
+                                                         NSDayCalendarUnit |
+                                                         NSMonthCalendarUnit |
+                                                         NSYearCalendarUnit |
+                                                         NSHourCalendarUnit |
+                                                         NSMinuteCalendarUnit)
+                                               fromDate:date];
+    NSInteger hour = [components hour];
+    NSInteger minute = [components minute];
+    resultInt = hour*60+minute;
+    
+    return resultInt;
+}
+
 - (float)accuracyOf:(ASRecord *)record accordingTo:(ASGoal *)goal
 {
     float resultFloat = 0.0;
     
     NSDate *rd1 = [self dateFromTimeInterval:[record realStartAt]];
     NSDate *rd2 = [self dateFromTimeInterval:[record realFinishAt]];
+    NSDate *gd1 = [self dateFromTimeInterval:[goal everydayStartAt]];
+    NSDate *gd2 = [self dateFromTimeInterval:[goal everydayFinishAt]];
+    
     NSInteger realStartPoint = [self timePointToInt:rd1];
     NSInteger realFinishPoint = [self timePointToInt:rd2];
-    NSInteger goalStartPoint = [goal everydayStartAt];
-    NSInteger goalFinishPoint = [goal everydayFinishAt];
+    NSInteger goalStartPoint = [self timePointToInt:gd1];
+    NSInteger goalFinishPoint = [self timePointToInt:gd2];
     
     if ([self dayFromDate:rd2] != [self dayFromDate:rd1]) {
         realFinishPoint = 23*60+59; // last of the day

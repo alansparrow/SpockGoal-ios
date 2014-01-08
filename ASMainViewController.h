@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ASMainViewController : UITableViewController <UITabBarControllerDelegate>
-
+@interface ASMainViewController : UITableViewController <UITabBarControllerDelegate, UIActionSheetDelegate>
+{
+    NSInteger selectingRow;
+}
 @end

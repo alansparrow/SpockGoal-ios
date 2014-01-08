@@ -19,8 +19,13 @@
     // Create a MainViewController
     ASMainViewController *mainViewController = [[ASMainViewController alloc] init];
     
+    // Create an instance of a UINavigationController
+    // its stack contains only mainViewController
+    UINavigationController *navController = [[UINavigationController alloc]
+                                             initWithRootViewController:mainViewController];
+    
     // Place MainViewController's table view in the window hierarchy
-    [[self window] setRootViewController:mainViewController];
+    [[self window] setRootViewController:navController];
     
     
     self.window.backgroundColor = [UIColor whiteColor];

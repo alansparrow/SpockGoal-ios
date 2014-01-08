@@ -12,6 +12,9 @@
 #import "ASGoalCell.h"
 #import "ASRandom.h"
 #import "ASRecord.h"
+#import "ASGoalFormViewController.h"
+
+#define WSLog(...) NSLog(__VA_ARGS__)
 
 @implementation ASMainViewController
 
@@ -53,11 +56,81 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    selectingRow = [indexPath row];
+    
+    ASGoal *g = [[[ASGoalStore sharedStore] allGoals] objectAtIndex:[indexPath row]];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:[g title]
+                                  delegate:self
+                                  cancelButtonTitle:@"Cancel"
+                                  destructiveButtonTitle:nil
+                                  otherButtonTitles:@"Start",
+                                  @"Detail",
+                                  @"Edit", nil];
+    [actionSheet setActionSheetStyle:UIActionSheetStyleDefault];
+    [actionSheet showInView:[self view]];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    WSLog([NSString stringWithFormat:@"Selecting: %d row", selectingRow]);
+    /*
+    switch (buttonIndex) {
+        case 0:
+            WSLog(@"Clicked Start");
+            break;
+        case 1:
+            WSLog(@"Clicked Detail");
+            break;
+        case 2:
+            WSLog(@"Clicked Edit");
+            ASGoalFormController *gfc = [[ASGoalFormController alloc] init];
+            [[self navigationController] pushViewController:gfc animated:YES];
+            break;
+        case 3:
+            WSLog(@"Clicked Cancel");
+            break;
+        default:
+            break;
+    }*/
+    
+    if (buttonIndex == 2) {
+        WSLog(@"Clicked Edit");
+        //ASGoalFormViewController *gfc = [[ASGoalFormViewController alloc] init];
+        ASGoalFormViewController *gfc = [[ASGoalFormViewController alloc]
+                                         initForGoal:[[[ASGoalStore sharedStore] allGoals]
+                                                      objectAtIndex:selectingRow]];
+        //ASGoalFormViewController *gfc1 = [[ASGoalFormViewController alloc] initForGoal:nil];
+        [[self navigationController] pushViewController:gfc animated:YES];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     UINib *nib = [UINib nibWithNibName:@"ASGoalCell" bundle:nil];
     [[self tableView] registerNib:nib forCellReuseIdentifier:@"ASGoalCell"];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    [[self tableView] reloadData];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

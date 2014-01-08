@@ -24,11 +24,13 @@
 		D83DD122187B4C210092D155 /* SpockGoal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D83DD120187B4C210092D155 /* SpockGoal.xcdatamodeld */; };
 		D83DD12B187B52320092D155 /* ASGoalStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D83DD12A187B52320092D155 /* ASGoalStore.m */; };
 		D83DD12F187B58580092D155 /* ASTimeProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = D83DD12E187B58580092D155 /* ASTimeProcess.m */; };
-		D83DD138187C30B90092D155 /* ASRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D83DD137187C30B90092D155 /* ASRecord.m */; };
-		D83DD13B187C30BA0092D155 /* ASGoal.m in Sources */ = {isa = PBXBuildFile; fileRef = D83DD13A187C30BA0092D155 /* ASGoal.m */; };
 		D8F9C6D7187C72440033B5C4 /* ASGoalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F9C6D6187C72440033B5C4 /* ASGoalCell.m */; };
 		D8F9C6D9187C72650033B5C4 /* ASGoalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8F9C6D8187C72650033B5C4 /* ASGoalCell.xib */; };
 		D8F9C6DC187C7AF70033B5C4 /* ASRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F9C6DB187C7AF70033B5C4 /* ASRandom.m */; };
+		D8F9C6EF187CAF0F0033B5C4 /* ASGoalFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F9C6ED187CAF0F0033B5C4 /* ASGoalFormViewController.m */; };
+		D8F9C6F0187CAF0F0033B5C4 /* ASGoalFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8F9C6EE187CAF0F0033B5C4 /* ASGoalFormViewController.xib */; };
+		D8F9C6F3187CCD2A0033B5C4 /* ASRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F9C6F2187CCD2A0033B5C4 /* ASRecord.m */; };
+		D8F9C6F6187CCD2B0033B5C4 /* ASGoal.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F9C6F5187CCD2B0033B5C4 /* ASGoal.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,15 +68,18 @@
 		D83DD12A187B52320092D155 /* ASGoalStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGoalStore.m; sourceTree = "<group>"; };
 		D83DD12D187B58580092D155 /* ASTimeProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASTimeProcess.h; sourceTree = "<group>"; };
 		D83DD12E187B58580092D155 /* ASTimeProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASTimeProcess.m; sourceTree = "<group>"; };
-		D83DD136187C30B90092D155 /* ASRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASRecord.h; sourceTree = "<group>"; };
-		D83DD137187C30B90092D155 /* ASRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASRecord.m; sourceTree = "<group>"; };
-		D83DD139187C30BA0092D155 /* ASGoal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASGoal.h; sourceTree = "<group>"; };
-		D83DD13A187C30BA0092D155 /* ASGoal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGoal.m; sourceTree = "<group>"; };
 		D8F9C6D5187C72440033B5C4 /* ASGoalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASGoalCell.h; sourceTree = "<group>"; };
 		D8F9C6D6187C72440033B5C4 /* ASGoalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGoalCell.m; sourceTree = "<group>"; };
 		D8F9C6D8187C72650033B5C4 /* ASGoalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASGoalCell.xib; sourceTree = "<group>"; };
 		D8F9C6DA187C7AF70033B5C4 /* ASRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASRandom.h; sourceTree = "<group>"; };
 		D8F9C6DB187C7AF70033B5C4 /* ASRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASRandom.m; sourceTree = "<group>"; };
+		D8F9C6EC187CAF0F0033B5C4 /* ASGoalFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASGoalFormViewController.h; sourceTree = "<group>"; };
+		D8F9C6ED187CAF0F0033B5C4 /* ASGoalFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGoalFormViewController.m; sourceTree = "<group>"; };
+		D8F9C6EE187CAF0F0033B5C4 /* ASGoalFormViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASGoalFormViewController.xib; sourceTree = "<group>"; };
+		D8F9C6F1187CCD2A0033B5C4 /* ASRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASRecord.h; sourceTree = "<group>"; };
+		D8F9C6F2187CCD2A0033B5C4 /* ASRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASRecord.m; sourceTree = "<group>"; };
+		D8F9C6F4187CCD2B0033B5C4 /* ASGoal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASGoal.h; sourceTree = "<group>"; };
+		D8F9C6F5187CCD2B0033B5C4 /* ASGoal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGoal.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,10 +195,10 @@
 			isa = PBXGroup;
 			children = (
 				D83DD120187B4C210092D155 /* SpockGoal.xcdatamodeld */,
-				D83DD139187C30BA0092D155 /* ASGoal.h */,
-				D83DD13A187C30BA0092D155 /* ASGoal.m */,
-				D83DD136187C30B90092D155 /* ASRecord.h */,
-				D83DD137187C30B90092D155 /* ASRecord.m */,
+				D8F9C6F4187CCD2B0033B5C4 /* ASGoal.h */,
+				D8F9C6F5187CCD2B0033B5C4 /* ASGoal.m */,
+				D8F9C6F1187CCD2A0033B5C4 /* ASRecord.h */,
+				D8F9C6F2187CCD2A0033B5C4 /* ASRecord.m */,
 				D83DD129187B52320092D155 /* ASGoalStore.h */,
 				D83DD12A187B52320092D155 /* ASGoalStore.m */,
 			);
@@ -206,6 +211,9 @@
 				D8F9C6D5187C72440033B5C4 /* ASGoalCell.h */,
 				D8F9C6D6187C72440033B5C4 /* ASGoalCell.m */,
 				D8F9C6D8187C72650033B5C4 /* ASGoalCell.xib */,
+				D8F9C6EC187CAF0F0033B5C4 /* ASGoalFormViewController.h */,
+				D8F9C6ED187CAF0F0033B5C4 /* ASGoalFormViewController.m */,
+				D8F9C6EE187CAF0F0033B5C4 /* ASGoalFormViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -300,6 +308,7 @@
 				D83DD075187B3BEC0092D155 /* InfoPlist.strings in Resources */,
 				D83DD07D187B3BEC0092D155 /* Images.xcassets in Resources */,
 				D8F9C6D9187C72650033B5C4 /* ASGoalCell.xib in Resources */,
+				D8F9C6F0187CAF0F0033B5C4 /* ASGoalFormViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,13 +329,14 @@
 			files = (
 				D83DD07B187B3BEC0092D155 /* ASAppDelegate.m in Sources */,
 				D83DD09B187B3C330092D155 /* ASMainViewController.m in Sources */,
-				D83DD13B187C30BA0092D155 /* ASGoal.m in Sources */,
 				D83DD12B187B52320092D155 /* ASGoalStore.m in Sources */,
 				D83DD12F187B58580092D155 /* ASTimeProcess.m in Sources */,
 				D83DD077187B3BEC0092D155 /* main.m in Sources */,
-				D83DD138187C30B90092D155 /* ASRecord.m in Sources */,
+				D8F9C6EF187CAF0F0033B5C4 /* ASGoalFormViewController.m in Sources */,
+				D8F9C6F6187CCD2B0033B5C4 /* ASGoal.m in Sources */,
 				D8F9C6D7187C72440033B5C4 /* ASGoalCell.m in Sources */,
 				D8F9C6DC187C7AF70033B5C4 /* ASRandom.m in Sources */,
+				D8F9C6F3187CCD2A0033B5C4 /* ASRecord.m in Sources */,
 				D83DD122187B4C210092D155 /* SpockGoal.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -62,6 +62,7 @@
 
 - (float)randomAccumulatedHours
 {
+    rand();
     NSArray *randomAccumulatedHours = [NSArray arrayWithObjects:[NSNumber numberWithFloat:10000.0],
                                        [NSNumber numberWithFloat:1000.0],
                                        [NSNumber numberWithFloat:8000.0],
@@ -74,18 +75,34 @@
             rand() % [randomAccumulatedHours count]] floatValue];
 }
 
-- (NSInteger)randomTimePoint1
+- (NSDate *)randomTimePoint1
 {
-    NSInteger timeSpace = 12*60+59;
+    NSDate *resultDate = nil;
     
-    return (rand()%timeSpace);
+    NSArray *randomDates = [NSArray arrayWithObjects:@"1:07 AM",
+                            @"5:27 AM",
+                            @"3:07 AM", nil];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterNoStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    
+    resultDate = [dateFormatter dateFromString:[randomDates objectAtIndex:rand()%3]];
+    return resultDate;
 }
 
-- (NSInteger)randomTimePoint2
+- (NSDate *)randomTimePoint2
 {
-    NSInteger timeSpace = 10*60+59;
+    NSDate *resultDate = nil;
     
-    return (12*60+29)+(rand()%timeSpace);
+    NSArray *randomDates = [NSArray arrayWithObjects:@"4:07 PM",
+                            @"11:47 PM",
+                            @"10:07 PM", nil];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterNoStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    
+    resultDate = [dateFormatter dateFromString:[randomDates objectAtIndex:rand()%3]];
+    return resultDate;
 }
 
 - (BOOL)randomBoolean

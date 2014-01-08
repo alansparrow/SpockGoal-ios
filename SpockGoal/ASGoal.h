@@ -2,7 +2,7 @@
 //  ASGoal.h
 //  SpockGoal
 //
-//  Created by Alan Sparrow on 1/7/14.
+//  Created by Alan Sparrow on 1/8/14.
 //  Copyright (c) 2014 Alan Sparrow. All rights reserved.
 //
 
@@ -13,19 +13,19 @@
 
 @interface ASGoal : NSManagedObject
 
-@property (nonatomic, retain) NSString * title;
 @property (nonatomic) NSTimeInterval createdDate;
-@property (nonatomic) int32_t everydayFinishAt;
-@property (nonatomic) int32_t everydayStartAt;
-@property (nonatomic) BOOL remindMe;
-@property (nonatomic) BOOL monday;
-@property (nonatomic) BOOL tuesday;
-@property (nonatomic) BOOL wednesday;
-@property (nonatomic) BOOL thursday;
+@property (nonatomic) NSTimeInterval everydayFinishAt;
+@property (nonatomic) NSTimeInterval everydayStartAt;
 @property (nonatomic) BOOL friday;
+@property (nonatomic) BOOL monday;
+@property (nonatomic) double orderingValue;
+@property (nonatomic) BOOL remindMe;
 @property (nonatomic) BOOL saturday;
 @property (nonatomic) BOOL sunday;
-@property (nonatomic) double orderingValue;
+@property (nonatomic) BOOL thursday;
+@property (nonatomic, retain) NSString * title;
+@property (nonatomic) BOOL tuesday;
+@property (nonatomic) BOOL wednesday;
 @property (nonatomic, retain) NSSet *records;
 
 - (float)accumulatedHours;

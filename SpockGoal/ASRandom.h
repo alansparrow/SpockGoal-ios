@@ -15,8 +15,8 @@
 
 - (NSString *)randomGoalTitle;
 - (float)randomAccumulatedHours;
-- (NSInteger)randomTimePoint1;
-- (NSInteger)randomTimePoint2;
+- (NSDate *)randomTimePoint1;
+- (NSDate *)randomTimePoint2;
 - (BOOL)randomBoolean;
 - (NSDate *)randomDate;
 - (void)initRandomValueFor:(ASRecord *)record;
