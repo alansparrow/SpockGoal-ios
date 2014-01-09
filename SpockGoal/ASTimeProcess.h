@@ -26,5 +26,5 @@
 - (NSInteger)minuteFromDate:(NSDate *)date; // 0-59
 - (float)accuracyOf:(ASRecord *)record accordingTo:(ASGoal *)goal;
 - (NSDate *)dateFromTimeInterval:(NSTimeInterval)timeInterval;
-
+- (NSString *)timeStringFromTimeInterval:(NSTimeInterval)timeInterval;
 @end

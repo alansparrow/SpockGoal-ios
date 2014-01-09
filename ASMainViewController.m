@@ -13,6 +13,8 @@
 #import "ASRandom.h"
 #import "ASRecord.h"
 #import "ASGoalFormViewController.h"
+#import "ASTimerViewController.h"
+#import "ASRecordListController.h"
 
 #define ASLog(...) NSLog(__VA_ARGS__)
 
@@ -115,7 +117,39 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ASLog([NSString stringWithFormat:@"Selecting: %d row", selectingRow]);
     
-    if (buttonIndex == 2) {
+    if (buttonIndex == 0) {
+        ASLog(@"Clicked Start");
+        ASTimerViewController *tvc = [[ASTimerViewController alloc]
+                                      initFor:[[[ASGoalStore sharedStore] allGoals]
+                                               objectAtIndex:selectingRow]];
+        [tvc setDismissBlock:^void{
+            [[self tableView] reloadData];
+        }];
+        
+        [self presentViewController:tvc
+                           animated:YES
+                         completion:nil];
+        
+    } else if (buttonIndex == 1) {
+        ASLog(@"Clicked Detail");
+        ASRecordListController *rvc = [[ASRecordListController alloc]
+                                       initFor:[[[ASGoalStore sharedStore] allGoals]
+                                                objectAtIndex:selectingRow]];
+        [rvc setDismissBlock:^void{
+            [[self tableView] reloadData];
+        }];
+        
+        UINavigationController *navController = [[UINavigationController alloc]
+                                                 initWithRootViewController:rvc];
+        [navController setModalPresentationStyle:UIModalPresentationFullScreen];
+        [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+        
+        [self presentViewController:navController
+                           animated:YES
+                         completion:nil];
+        
+        
+    } else if (buttonIndex == 2) {
         
         ASLog(@"Clicked Edit");
         //ASGoalFormViewController *gfc = [[ASGoalFormViewController alloc] init];

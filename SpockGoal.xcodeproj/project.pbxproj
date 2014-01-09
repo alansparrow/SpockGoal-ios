@@ -24,6 +24,11 @@
 		D83DD122187B4C210092D155 /* SpockGoal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D83DD120187B4C210092D155 /* SpockGoal.xcdatamodeld */; };
 		D83DD12B187B52320092D155 /* ASGoalStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D83DD12A187B52320092D155 /* ASGoalStore.m */; };
 		D83DD12F187B58580092D155 /* ASTimeProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = D83DD12E187B58580092D155 /* ASTimeProcess.m */; };
+		D8DE0A5A187E982900BAFC3A /* ASTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DE0A58187E982900BAFC3A /* ASTimerViewController.m */; };
+		D8DE0A5B187E982900BAFC3A /* ASTimerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8DE0A59187E982900BAFC3A /* ASTimerViewController.xib */; };
+		D8DE0A5E187ED0D800BAFC3A /* ASRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DE0A5D187ED0D800BAFC3A /* ASRecordCell.m */; };
+		D8DE0A60187ED18A00BAFC3A /* ASRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8DE0A5F187ED18A00BAFC3A /* ASRecordCell.xib */; };
+		D8DE0A64187EDB4E00BAFC3A /* ASRecordListController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DE0A62187EDB4E00BAFC3A /* ASRecordListController.m */; };
 		D8F9C6D7187C72440033B5C4 /* ASGoalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F9C6D6187C72440033B5C4 /* ASGoalCell.m */; };
 		D8F9C6D9187C72650033B5C4 /* ASGoalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8F9C6D8187C72650033B5C4 /* ASGoalCell.xib */; };
 		D8F9C6DC187C7AF70033B5C4 /* ASRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F9C6DB187C7AF70033B5C4 /* ASRandom.m */; };
@@ -72,6 +77,14 @@
 		D83DD12A187B52320092D155 /* ASGoalStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGoalStore.m; sourceTree = "<group>"; };
 		D83DD12D187B58580092D155 /* ASTimeProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASTimeProcess.h; sourceTree = "<group>"; };
 		D83DD12E187B58580092D155 /* ASTimeProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASTimeProcess.m; sourceTree = "<group>"; };
+		D8DE0A57187E982900BAFC3A /* ASTimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASTimerViewController.h; sourceTree = "<group>"; };
+		D8DE0A58187E982900BAFC3A /* ASTimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASTimerViewController.m; sourceTree = "<group>"; };
+		D8DE0A59187E982900BAFC3A /* ASTimerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASTimerViewController.xib; sourceTree = "<group>"; };
+		D8DE0A5C187ED0D800BAFC3A /* ASRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASRecordCell.h; sourceTree = "<group>"; };
+		D8DE0A5D187ED0D800BAFC3A /* ASRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASRecordCell.m; sourceTree = "<group>"; };
+		D8DE0A5F187ED18A00BAFC3A /* ASRecordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASRecordCell.xib; sourceTree = "<group>"; };
+		D8DE0A61187EDB4E00BAFC3A /* ASRecordListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASRecordListController.h; sourceTree = "<group>"; };
+		D8DE0A62187EDB4E00BAFC3A /* ASRecordListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASRecordListController.m; sourceTree = "<group>"; };
 		D8F9C6D5187C72440033B5C4 /* ASGoalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASGoalCell.h; sourceTree = "<group>"; };
 		D8F9C6D6187C72440033B5C4 /* ASGoalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGoalCell.m; sourceTree = "<group>"; };
 		D8F9C6D8187C72650033B5C4 /* ASGoalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASGoalCell.xib; sourceTree = "<group>"; };
@@ -199,6 +212,8 @@
 			children = (
 				D83DD099187B3C330092D155 /* ASMainViewController.h */,
 				D83DD09A187B3C330092D155 /* ASMainViewController.m */,
+				D8DE0A61187EDB4E00BAFC3A /* ASRecordListController.h */,
+				D8DE0A62187EDB4E00BAFC3A /* ASRecordListController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -225,12 +240,18 @@
 				D8F9C6D5187C72440033B5C4 /* ASGoalCell.h */,
 				D8F9C6D6187C72440033B5C4 /* ASGoalCell.m */,
 				D8F9C6D8187C72650033B5C4 /* ASGoalCell.xib */,
+				D8DE0A5C187ED0D800BAFC3A /* ASRecordCell.h */,
+				D8DE0A5D187ED0D800BAFC3A /* ASRecordCell.m */,
+				D8DE0A5F187ED18A00BAFC3A /* ASRecordCell.xib */,
 				D8F9C6EC187CAF0F0033B5C4 /* ASGoalFormViewController.h */,
 				D8F9C6ED187CAF0F0033B5C4 /* ASGoalFormViewController.m */,
 				D8F9C6EE187CAF0F0033B5C4 /* ASGoalFormViewController.xib */,
 				D8F9C6F7187CD83C0033B5C4 /* ASTimePickerViewController.h */,
 				D8F9C6F8187CD83C0033B5C4 /* ASTimePickerViewController.m */,
 				D8F9C6F9187CD83C0033B5C4 /* ASTimePickerViewController.xib */,
+				D8DE0A57187E982900BAFC3A /* ASTimerViewController.h */,
+				D8DE0A58187E982900BAFC3A /* ASTimerViewController.m */,
+				D8DE0A59187E982900BAFC3A /* ASTimerViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -323,7 +344,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D83DD075187B3BEC0092D155 /* InfoPlist.strings in Resources */,
+				D8DE0A60187ED18A00BAFC3A /* ASRecordCell.xib in Resources */,
 				D83DD07D187B3BEC0092D155 /* Images.xcassets in Resources */,
+				D8DE0A5B187E982900BAFC3A /* ASTimerViewController.xib in Resources */,
 				D8F9C6D9187C72650033B5C4 /* ASGoalCell.xib in Resources */,
 				D8F9C6FB187CD83C0033B5C4 /* ASTimePickerViewController.xib in Resources */,
 				D8F9C6F0187CAF0F0033B5C4 /* ASGoalFormViewController.xib in Resources */,
@@ -349,12 +372,15 @@
 				D83DD09B187B3C330092D155 /* ASMainViewController.m in Sources */,
 				D83DD12B187B52320092D155 /* ASGoalStore.m in Sources */,
 				D83DD12F187B58580092D155 /* ASTimeProcess.m in Sources */,
+				D8DE0A5E187ED0D800BAFC3A /* ASRecordCell.m in Sources */,
 				D83DD077187B3BEC0092D155 /* main.m in Sources */,
+				D8DE0A64187EDB4E00BAFC3A /* ASRecordListController.m in Sources */,
 				D8F9C6EF187CAF0F0033B5C4 /* ASGoalFormViewController.m in Sources */,
 				D8F9C6F6187CCD2B0033B5C4 /* ASGoal.m in Sources */,
 				D8F9C6FA187CD83C0033B5C4 /* ASTimePickerViewController.m in Sources */,
 				D8F9C6D7187C72440033B5C4 /* ASGoalCell.m in Sources */,
 				D8F9C700187D97D90033B5C4 /* ASGoalCopy.m in Sources */,
+				D8DE0A5A187E982900BAFC3A /* ASTimerViewController.m in Sources */,
 				D8F9C6DC187C7AF70033B5C4 /* ASRandom.m in Sources */,
 				D8F9C6F3187CCD2A0033B5C4 /* ASRecord.m in Sources */,
 				D83DD122187B4C210092D155 /* SpockGoal.xcdatamodeld in Sources */,

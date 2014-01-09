@@ -25,6 +25,7 @@
 
 - (NSArray *)allGoals;
 - (ASGoal *)createGoal;
+- (ASRecord *)createRecordForGoal:(ASGoal *)g;
 - (ASGoal *)createRandomGoal;
 - (ASRecord *)createRandomRecordForGoal:(ASGoal *)goal;
 - (void)removeGoal:(ASGoal *)g;

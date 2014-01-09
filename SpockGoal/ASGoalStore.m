@@ -120,6 +120,16 @@
     return g;
 }
 
+- (ASRecord *)createRecordForGoal:(ASGoal *)g
+{
+    ASRecord *r = [NSEntityDescription insertNewObjectForEntityForName:@"ASRecord"
+                                                inManagedObjectContext:context];
+    [r setGoal:g];
+    [g addRecordsObject:r];
+    
+    return r;
+}
+
 - (ASGoal *)createRandomGoal
 {
     
@@ -166,7 +176,7 @@
 
 - (BOOL)saveChanges
 {
-    // Remove all empty and time failed goal
+    // Remove all empty and time failed goal, only if there is no record
     // In case of sudden suspend
     for (ASGoal *g in [self allGoals]) {
         if ([[g title] isEqual:@""] || ![self checkTimeOf:g]) {

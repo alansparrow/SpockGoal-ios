@@ -13,7 +13,7 @@
 @implementation ASRecord
 
 @dynamic accuracy;
-@dynamic createdDate;
+@dynamic createdDay;
 @dynamic createdMonth;
 @dynamic createdYear;
 @dynamic duration;

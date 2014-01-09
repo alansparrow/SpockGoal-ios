@@ -16,7 +16,7 @@
     __weak IBOutlet UIDatePicker *startAtDatePicker;
     __weak IBOutlet UIDatePicker *finishAtDatePicker;
 
-    ASGoal *savedGoal;
+    __weak ASGoal *savedGoal;
 }
 
 - (id)initFor:(ASGoal *)goal;

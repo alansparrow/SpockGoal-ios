@@ -14,7 +14,7 @@
 @interface ASRecord : NSManagedObject
 
 @property (nonatomic) double accuracy;
-@property (nonatomic) int32_t createdDate;
+@property (nonatomic) int32_t createdDay;
 @property (nonatomic) int32_t createdMonth;
 @property (nonatomic) int32_t createdYear;
 @property (nonatomic) double duration;

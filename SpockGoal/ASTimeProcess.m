@@ -50,6 +50,7 @@
 
 - (NSString *)dateToString:(NSDate *)date
 {
+    /*
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [calendar components:(NSWeekdayCalendarUnit |
                                                          NSDayCalendarUnit |
@@ -64,6 +65,13 @@
     
     NSString *resultString = [NSString stringWithFormat:@"%d.%d.%d", day, month, year];
     NSLog(@"%d %d %d", day, month, year);
+     */
+    
+    NSString *resultString = nil;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    resultString = [dateFormatter stringFromDate:date];
     
     return resultString;
 }
@@ -246,6 +254,19 @@
     resultDate = [NSDate dateWithTimeIntervalSinceReferenceDate:timeInterval];
     
     return resultDate;
+}
+
+- (NSString *)timeStringFromTimeInterval:(NSTimeInterval)timeInterval
+{
+    NSString *resultString = nil;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    resultString = [dateFormatter
+                    stringFromDate:[NSDate
+                                    dateWithTimeIntervalSinceReferenceDate:timeInterval]];
+    
+    return resultString;
 }
 
 @end

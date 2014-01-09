@@ -25,7 +25,7 @@
     __weak IBOutlet UISwitch *remindMeSwitch;
     __weak IBOutlet UIButton *sunButton;
     
-    ASGoal *savedGoal;
+    __weak ASGoal *savedGoal;
     ASGoalCopy *copyGoal;
 }
 
