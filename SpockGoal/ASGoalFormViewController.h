@@ -42,6 +42,6 @@
 - (IBAction)sunClick:(id)sender;
 
 - (id)initForGoal:(ASGoal *)goal newGoal:(BOOL)isNew;
-
+- (id)initForNewGoal;
 
 @end

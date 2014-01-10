@@ -71,6 +71,28 @@
     return self;
 }
 
+- (id)initForNewGoal
+{
+    self = [super initWithNibName:@"ASGoalFormViewController" bundle:nil];
+    savedGoal = [[ASGoalStore sharedStore] createGoal];
+    
+    if (self) {
+        UIBarButtonItem *doneItem =[[UIBarButtonItem alloc]
+                                    initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                    target:self
+                                    action:@selector(save:)];
+        [[self navigationItem] setRightBarButtonItem:doneItem];
+        
+        UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc]
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                       target:self
+                                       action:@selector(cancelNewGoal:)]; // remove
+        [[self navigationItem] setLeftBarButtonItem:cancelItem];
+    }
+    
+    return self;
+}
+
 - (IBAction)save:(id)sender
 {
     if ([[goalTitleTextField text] isEqual:@""]) {
@@ -134,6 +156,7 @@
 {
     // If the user cancelled, then remove the ASGoal from the store
     [[ASGoalStore sharedStore] removeGoal:savedGoal];
+    savedGoal = nil;
     
     [[self presentingViewController]
      dismissViewControllerAnimated:YES completion:dismissBlock];

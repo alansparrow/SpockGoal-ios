@@ -169,9 +169,11 @@
 
 - (void)removeGoal:(ASGoal *)g
 {
-    [context deleteObject:g];
-    [allGoals removeObjectIdenticalTo:g];
-    [self saveChanges];
+    if (g) {
+        [context deleteObject:g];
+        [allGoals removeObjectIdenticalTo:g];
+        [self saveChanges];
+    }
 }
 
 - (BOOL)saveChanges

@@ -57,10 +57,10 @@
     // New goal so initForGoal:nil
     ASGoalFormViewController *gfc = [[ASGoalFormViewController alloc] initForGoal:newGoal
                                      newGoal:YES];
+    
     [gfc setDismissBlock:^void{
         [[self tableView] reloadData];
     }];
-    
     UINavigationController *navController = [[UINavigationController alloc]
                                              initWithRootViewController:gfc];
     [navController setModalPresentationStyle:UIModalPresentationFullScreen];
