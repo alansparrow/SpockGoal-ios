@@ -96,7 +96,7 @@
 - (IBAction)save:(id)sender
 {
     if ([[goalTitleTextField text] isEqual:@""]) {
-        
+        /*
         // Don't really understand but it just works
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [UIView beginAnimations:@"fade in" context:nil];
@@ -114,6 +114,20 @@
             [goalTitleTextField setBackgroundColor:[UIColor whiteColor]];
             [UIView commitAnimations];
         }];
+        */
+        [UIView animateWithDuration:1.0
+                         animations:^{
+                             [goalTitleTextField setBackgroundColor:[UIColor colorWithRed:1.0
+                                                                                    green:182.0/255.0
+                                                                                     blue:193.0/255.0
+                                                                                    alpha:0.8]];
+                         }
+                         completion:^(BOOL finished) {
+                             [UIView beginAnimations:@"fade in" context:nil];
+                             [UIView setAnimationDuration:1.0];
+                             [goalTitleTextField setBackgroundColor:[UIColor whiteColor]];
+                             [UIView commitAnimations];
+                         }];
         
     }
     
