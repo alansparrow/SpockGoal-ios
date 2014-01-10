@@ -96,22 +96,25 @@
 - (IBAction)save:(id)sender
 {
     if ([[goalTitleTextField text] isEqual:@""]) {
-        /*
-        [goalTitleTextField setBackgroundColor:[UIColor blueColor]];
         
-        [UIView animateWithDuration:4.0 animations:^{
+        // Don't really understand but it just works
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [UIView beginAnimations:@"fade in" context:nil];
+            [UIView setAnimationDuration:3.0];
             [goalTitleTextField setBackgroundColor:[UIColor colorWithRed:1.0
-                                                                   green:0.0
-                                                                    blue:0.0
-                                                                   alpha:0.5]];
-        } completion:nil];
-         */
-        [goalTitleTextField setBackgroundColor:[UIColor redColor]];
-
-        [UIView beginAnimations:@"fade in" context:nil];
-        [UIView setAnimationDuration:3.0];
-        [goalTitleTextField setBackgroundColor:[UIColor whiteColor]];
-        [UIView commitAnimations];
+                                                                   green:182.0/255.0
+                                                                    blue:193.0/255.0
+                                                                   alpha:0.8]];
+            [UIView commitAnimations];
+        }];
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [UIView beginAnimations:@"fade in" context:nil];
+            [UIView setAnimationDuration:3.0];
+            [goalTitleTextField setBackgroundColor:[UIColor whiteColor]];
+            [UIView commitAnimations];
+        }];
+        
     }
     
     if (![self checkTime]) {
