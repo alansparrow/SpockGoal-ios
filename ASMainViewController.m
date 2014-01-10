@@ -25,15 +25,6 @@
     // Call the superclass's designated initializer
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        /*
-        for (int i = 0; i < 5; i++) {
-            ASGoal *g = [[ASGoalStore sharedStore] createRandomGoal];
-            
-            for (int j = 0; j < 10; j++) {
-                [[ASGoalStore sharedStore] createRandomRecordForGoal:g];
-            }
-        }
-        */
         // Create a new bar button item that will send
         // addNewGoal: to MainViewController
         UINavigationItem *navItem = [self navigationItem];
@@ -88,7 +79,8 @@
     ASGoal *g = [[[ASGoalStore sharedStore] allGoals] objectAtIndex:[indexPath row]];
     ASGoalCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ASGoalCell"];
     [[cell goalTitleLabel] setText:[g title]];
-    [[cell accumulatedHourLabel] setText:[NSString stringWithFormat:@"%.2fh", [g accumulatedHours]]];
+    float accumulatedHours = [g accumulatedHours];
+    [[cell accumulatedHourLabel] setText:[NSString stringWithFormat:@"%.2fh", accumulatedHours]];
     
     return cell;
 }
@@ -178,6 +170,8 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+
+        
         ASGoalStore *gs = [ASGoalStore sharedStore];
         NSArray *goals = [gs allGoals];
         ASGoal *g = [goals objectAtIndex:[indexPath row]];
@@ -197,6 +191,8 @@ moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
                                        toIndex:[destinationIndexPath row]];
 }
 
+
+
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
     [super setEditing:editing animated:animated];
@@ -212,6 +208,8 @@ moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
     
 }
 
+
+    
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -223,6 +221,9 @@ moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
 {
     [super viewWillAppear:YES];
     [[self tableView] reloadData];
+    // turn off Editting mode so the right label can be shown
+    // if not the new created goal hour label will be empty
+    [self setEditing:NO animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

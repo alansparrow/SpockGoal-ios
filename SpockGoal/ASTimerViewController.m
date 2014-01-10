@@ -77,6 +77,7 @@
     [savedRecord setCreatedYear:[timeProcess yearFromDate:current]];
     [savedRecord setCreatedMonth:[timeProcess monthFromDate:current]];
     [savedRecord setCreatedDay:[timeProcess dayFromDate:current]];
+    [savedRecord setQuality:@"Medium"];
 }
 
 - (void)viewDidLoad
@@ -109,7 +110,7 @@
 
 - (IBAction)finishButtonClick:(id)sender {
     UIActionSheet *actionSheet = [[UIActionSheet alloc]
-                                  initWithTitle:@"Quality"
+                                  initWithTitle:@"My Performance"
                                   delegate:self
                                   cancelButtonTitle:@"Cancel"
                                   destructiveButtonTitle:nil
@@ -124,14 +125,20 @@
 clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) {
+        [stopWatchTimer invalidate];
+        stopWatchTimer = nil;
         [savedRecord setQuality:@"High"];
         [[self presentingViewController]
          dismissViewControllerAnimated:YES completion:dismissBlock];
     } else if (buttonIndex == 1) {
+        [stopWatchTimer invalidate];
+        stopWatchTimer = nil;
         [savedRecord setQuality:@"Medium"];
         [[self presentingViewController]
          dismissViewControllerAnimated:YES completion:dismissBlock];
     } else if (buttonIndex == 2) {
+        [stopWatchTimer invalidate];
+        stopWatchTimer = nil;
         [savedRecord setQuality:@"Low"];
         [[self presentingViewController]
          dismissViewControllerAnimated:YES completion:dismissBlock];

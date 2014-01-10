@@ -124,7 +124,7 @@
                          }
                          completion:^(BOOL finished) {
                              [UIView beginAnimations:@"fade in" context:nil];
-                             [UIView setAnimationDuration:1.0];
+                             [UIView setAnimationDuration:2.0];
                              [goalTitleTextField setBackgroundColor:[UIColor whiteColor]];
                              [UIView commitAnimations];
                          }];
