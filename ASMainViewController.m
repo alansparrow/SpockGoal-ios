@@ -15,6 +15,7 @@
 #import "ASGoalFormViewController.h"
 #import "ASTimerViewController.h"
 #import "ASRecordListController.h"
+#import "ASTimeProcess.h"
 
 #define ASLog(...) NSLog(__VA_ARGS__)
 
@@ -170,12 +171,14 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        ASTimeProcess *timeProcess = [[ASTimeProcess alloc] init];
 
         
         ASGoalStore *gs = [ASGoalStore sharedStore];
         NSArray *goals = [gs allGoals];
         ASGoal *g = [goals objectAtIndex:[indexPath row]];
-        [gs removeGoal:g];
+        [timeProcess removeAlarmForGoal:g]; // remove alarms
+        [gs removeGoal:g]; // remove from DB
         
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                          withRowAnimation:UITableViewRowAnimationFade];

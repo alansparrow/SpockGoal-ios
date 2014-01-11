@@ -29,6 +29,7 @@
 		D8DE0A5E187ED0D800BAFC3A /* ASRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DE0A5D187ED0D800BAFC3A /* ASRecordCell.m */; };
 		D8DE0A60187ED18A00BAFC3A /* ASRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8DE0A5F187ED18A00BAFC3A /* ASRecordCell.xib */; };
 		D8DE0A64187EDB4E00BAFC3A /* ASRecordListController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DE0A62187EDB4E00BAFC3A /* ASRecordListController.m */; };
+		D8DE0A6B1880C22800BAFC3A /* Illuminate.m4r in Resources */ = {isa = PBXBuildFile; fileRef = D8DE0A6A1880C22800BAFC3A /* Illuminate.m4r */; };
 		D8F9C6D7187C72440033B5C4 /* ASGoalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F9C6D6187C72440033B5C4 /* ASGoalCell.m */; };
 		D8F9C6D9187C72650033B5C4 /* ASGoalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8F9C6D8187C72650033B5C4 /* ASGoalCell.xib */; };
 		D8F9C6DC187C7AF70033B5C4 /* ASRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F9C6DB187C7AF70033B5C4 /* ASRandom.m */; };
@@ -85,6 +86,7 @@
 		D8DE0A5F187ED18A00BAFC3A /* ASRecordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASRecordCell.xib; sourceTree = "<group>"; };
 		D8DE0A61187EDB4E00BAFC3A /* ASRecordListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASRecordListController.h; sourceTree = "<group>"; };
 		D8DE0A62187EDB4E00BAFC3A /* ASRecordListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASRecordListController.m; sourceTree = "<group>"; };
+		D8DE0A6A1880C22800BAFC3A /* Illuminate.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = Illuminate.m4r; sourceTree = "<group>"; };
 		D8F9C6D5187C72440033B5C4 /* ASGoalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASGoalCell.h; sourceTree = "<group>"; };
 		D8F9C6D6187C72440033B5C4 /* ASGoalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGoalCell.m; sourceTree = "<group>"; };
 		D8F9C6D8187C72650033B5C4 /* ASGoalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASGoalCell.xib; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 		D83DD070187B3BEC0092D155 /* SpockGoal */ = {
 			isa = PBXGroup;
 			children = (
+				D8DE0A691880C20F00BAFC3A /* Sounds */,
 				D83DD07C187B3BEC0092D155 /* Images.xcassets */,
 				D83DD079187B3BEC0092D155 /* ASAppDelegate.h */,
 				D83DD07A187B3BEC0092D155 /* ASAppDelegate.m */,
@@ -267,6 +270,14 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		D8DE0A691880C20F00BAFC3A /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				D8DE0A6A1880C22800BAFC3A /* Illuminate.m4r */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -346,6 +357,7 @@
 				D83DD075187B3BEC0092D155 /* InfoPlist.strings in Resources */,
 				D8DE0A60187ED18A00BAFC3A /* ASRecordCell.xib in Resources */,
 				D83DD07D187B3BEC0092D155 /* Images.xcassets in Resources */,
+				D8DE0A6B1880C22800BAFC3A /* Illuminate.m4r in Resources */,
 				D8DE0A5B187E982900BAFC3A /* ASTimerViewController.xib in Resources */,
 				D8F9C6D9187C72650033B5C4 /* ASGoalCell.xib in Resources */,
 				D8F9C6FB187CD83C0033B5C4 /* ASTimePickerViewController.xib in Resources */,

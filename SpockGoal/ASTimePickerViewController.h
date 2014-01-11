@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class ASGoal;
+@class ASGoalCopy;
 
 @interface ASTimePickerViewController : UIViewController
 
@@ -16,9 +16,9 @@
     __weak IBOutlet UIDatePicker *startAtDatePicker;
     __weak IBOutlet UIDatePicker *finishAtDatePicker;
 
-    __weak ASGoal *savedGoal;
+    ASGoalCopy *copyGoal;
 }
 
-- (id)initFor:(ASGoal *)goal;
+- (id)initFor:(ASGoalCopy *)g;
 
 @end

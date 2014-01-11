@@ -7,7 +7,7 @@
 //
 
 #import "ASTimePickerViewController.h"
-#import "ASGoal.h"
+#import "ASGoalCopy.h"
 #import "ASTimeProcess.h"
 
 @interface ASTimePickerViewController ()
@@ -25,12 +25,12 @@
     return self;
 }
 
-- (id)initFor:(ASGoal *)goal
+- (id)initFor:(ASGoalCopy *)g
 {
     self = [super initWithNibName:@"ASTimePickerViewController" bundle:nil];
     
     if (self) {
-        savedGoal = goal;
+        copyGoal = g;
     }
     
     return self;
@@ -38,8 +38,14 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [startAtDatePicker setDate:[NSDate dateWithTimeIntervalSinceReferenceDate:[savedGoal everydayStartAt]]];
-    [finishAtDatePicker setDate:[NSDate dateWithTimeIntervalSinceReferenceDate:[savedGoal everydayFinishAt]]];
+    if ([copyGoal everydayStartAt]) {
+        [startAtDatePicker setDate:[NSDate dateWithTimeIntervalSinceReferenceDate:[copyGoal everydayStartAt]]];
+        [finishAtDatePicker setDate:[NSDate dateWithTimeIntervalSinceReferenceDate:[copyGoal everydayFinishAt]]];
+
+    } else {
+        [startAtDatePicker setDate:[NSDate dateWithTimeIntervalSinceReferenceDate:[NSDate timeIntervalSinceReferenceDate]]];
+        [finishAtDatePicker setDate:[NSDate dateWithTimeIntervalSinceReferenceDate:[NSDate timeIntervalSinceReferenceDate]]];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -50,12 +56,12 @@
     NSDate *date1 = [startAtDatePicker date];
     NSDate *date2 = [finishAtDatePicker date];
     
-    [savedGoal setEverydayStartAt:[date1 timeIntervalSinceReferenceDate]];
-    [savedGoal setEverydayFinishAt:[date2 timeIntervalSinceReferenceDate]];
+    [copyGoal setEverydayStartAt:[date1 timeIntervalSinceReferenceDate]];
+    [copyGoal setEverydayFinishAt:[date2 timeIntervalSinceReferenceDate]];
     
     ASTimeProcess *timeProcess = [[ASTimeProcess alloc] init];
-    NSLog(@"%@", [timeProcess timeIntervalToString:[savedGoal everydayStartAt]]);
-    NSLog(@"%@", [timeProcess timeIntervalToString:[savedGoal everydayFinishAt]]);
+    NSLog(@"%@", [timeProcess timeIntervalToString:[copyGoal everydayStartAt]]);
+    NSLog(@"%@", [timeProcess timeIntervalToString:[copyGoal everydayFinishAt]]);
 }
 
 - (void)viewDidLoad

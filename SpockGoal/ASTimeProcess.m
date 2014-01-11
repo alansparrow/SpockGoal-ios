@@ -269,4 +269,122 @@
     return resultString;
 }
 
+- (NSDate *)setAlarmTimeToHour:(NSInteger)hour andToMinute:(NSInteger)minute
+{
+    NSDate *resultDate = nil;
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:NSIntegerMax fromDate:[NSDate date]];
+    [components setHour:hour];
+    [components setMinute:minute];
+    
+    resultDate = [calendar dateFromComponents:components];
+    
+    return resultDate;
+}
+
+- (NSString *)goalIDString:(NSTimeInterval)createdDateOfGoal
+{
+    NSString *resultString = nil;
+    
+    resultString = [NSString stringWithFormat:@"%f", createdDateOfGoal];
+    
+    return resultString;
+}
+- (NSString *)alarmIDString:(NSTimeInterval)createdDateOfGoal forWeekday:(NSInteger)weekday
+{
+    NSString *resultString = nil;
+    
+    resultString = [NSString stringWithFormat:@"%f%d", createdDateOfGoal, weekday];
+    
+    return resultString;
+}
+
+- (void)removeAlarmForGoal:(ASGoal *)g
+{
+    ASTimeProcess *timeProcess = [[ASTimeProcess alloc] init];
+    
+    UIApplication *app = [UIApplication sharedApplication];
+    NSArray *eventArray = [app scheduledLocalNotifications];
+    for (int i = 0; i < [eventArray count]; i++) {
+        UILocalNotification *alarm = [eventArray objectAtIndex:i];
+        NSDictionary *userInfo = [alarm userInfo];
+        
+        if ([[userInfo valueForKey:@"goal_id"] isEqualToString:[timeProcess goalIDString:[g createdDate]]]) {
+            [app cancelLocalNotification:alarm];
+        }
+    }
+}
+
+- (void)setAlarmForGoal:(ASGoal *)g
+{
+    // 1st object is ignored because we use index to define weekday
+    // 1 is sunday, 2 is monday..
+    NSArray *weekdays = [NSArray arrayWithObjects:[NSDate date],
+                         [NSNumber numberWithBool:[g sunday]], [NSNumber numberWithBool:[g monday]],
+                         [NSNumber numberWithBool:[g tuesday]], [NSNumber numberWithBool:[g wednesday]],
+                         [NSNumber numberWithBool:[g thursday]], [NSNumber numberWithBool:[g friday]],
+                         [NSNumber numberWithBool:[g saturday]],
+                         nil];
+    ASTimeProcess *timeProcess = [[ASTimeProcess alloc] init];
+    
+    // remove all of this goal's alarm
+    // prepare for new setting
+    UIApplication *app = [UIApplication sharedApplication];
+    NSArray *eventArray = [app scheduledLocalNotifications];
+    for (int i = 0; i < [eventArray count]; i++) {
+        UILocalNotification *alarm = [eventArray objectAtIndex:i];
+        NSDictionary *userInfo = [alarm userInfo];
+        
+        if ([[userInfo valueForKey:@"goal_id"] isEqualToString:[timeProcess goalIDString:[g createdDate]]]) {
+            [app cancelLocalNotification:alarm];
+        }
+    }
+    
+    
+    
+    if ([g remindMe]) {
+        
+        NSInteger alarmHour = [timeProcess
+                               hourFromDate:
+                               [NSDate dateWithTimeIntervalSinceReferenceDate:[g everydayStartAt]]];
+        NSInteger alarmMinute = [timeProcess
+                                 minuteFromDate:
+                                 [NSDate dateWithTimeIntervalSinceReferenceDate:[g everydayStartAt]]];
+        
+        NSDate *baseTime = [timeProcess
+                            setAlarmTimeToHour:alarmHour andToMinute:alarmMinute];
+        
+        NSInteger oneDayInterval = 24*60*60;
+        
+        for (int i = 0; i < 7; i++) {
+            double timeInterval = i * oneDayInterval;
+            NSDate *alarmTime = [baseTime dateByAddingTimeInterval:timeInterval];
+            NSInteger weekday = [timeProcess weekdayFromDate:alarmTime];
+            if ([[weekdays objectAtIndex:weekday] boolValue] == YES) {
+                UILocalNotification *alarm = [[UILocalNotification alloc] init];
+                [alarm setFireDate:alarmTime];
+                [alarm setRepeatInterval:NSWeekCalendarUnit];
+                
+                NSArray *keys = [NSArray arrayWithObjects:@"goal_id",
+                                 @"alarm_id",
+                                 @"message", nil];
+                NSArray *values = [NSArray arrayWithObjects:[timeProcess goalIDString:[g createdDate]],
+                                   [timeProcess alarmIDString:[g createdDate] forWeekday:weekday],
+                                   [NSString stringWithFormat:@"It's time to do some %@", [g title]]
+                                   , nil];
+                NSDictionary *userInfo = [[NSDictionary alloc]
+                                          initWithObjects:values forKeys:keys];
+                [alarm setUserInfo:userInfo];
+                [alarm setAlertBody:[NSString stringWithFormat:@"It's time to do some %@",
+                                     [g title]]];
+                [alarm setSoundName:@"Illuminate.m4r"];
+                
+                [[UIApplication sharedApplication] scheduleLocalNotification:alarm];
+            }
+        }
+    }
+
+}
+
 @end

@@ -10,6 +10,7 @@
 #import "ASGoal.h"
 #import "ASGoalCopy.h"
 #import "ASTimeProcess.h"
+#import "ASTimeProcess.h"
 #import "ASTimePickerViewController.h"
 #import "ASGoalStore.h"
 #import <QuartzCore/QuartzCore.h>
@@ -71,50 +72,28 @@
     return self;
 }
 
-- (id)initForNewGoal
-{
-    self = [super initWithNibName:@"ASGoalFormViewController" bundle:nil];
-    savedGoal = [[ASGoalStore sharedStore] createGoal];
-    
-    if (self) {
-        UIBarButtonItem *doneItem =[[UIBarButtonItem alloc]
-                                    initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                    target:self
-                                    action:@selector(save:)];
-        [[self navigationItem] setRightBarButtonItem:doneItem];
-        
-        UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc]
-                                       initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                       target:self
-                                       action:@selector(cancelNewGoal:)]; // remove
-        [[self navigationItem] setLeftBarButtonItem:cancelItem];
-    }
-    
-    return self;
-}
-
 - (IBAction)save:(id)sender
 {
     if ([[goalTitleTextField text] isEqual:@""]) {
         /*
-        // Don't really understand but it just works
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            [UIView beginAnimations:@"fade in" context:nil];
-            [UIView setAnimationDuration:3.0];
-            [goalTitleTextField setBackgroundColor:[UIColor colorWithRed:1.0
-                                                                   green:182.0/255.0
-                                                                    blue:193.0/255.0
-                                                                   alpha:0.8]];
-            [UIView commitAnimations];
-        }];
-        
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            [UIView beginAnimations:@"fade in" context:nil];
-            [UIView setAnimationDuration:3.0];
-            [goalTitleTextField setBackgroundColor:[UIColor whiteColor]];
-            [UIView commitAnimations];
-        }];
-        */
+         // Don't really understand but it just works
+         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+         [UIView beginAnimations:@"fade in" context:nil];
+         [UIView setAnimationDuration:3.0];
+         [goalTitleTextField setBackgroundColor:[UIColor colorWithRed:1.0
+         green:182.0/255.0
+         blue:193.0/255.0
+         alpha:0.8]];
+         [UIView commitAnimations];
+         }];
+         
+         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+         [UIView beginAnimations:@"fade in" context:nil];
+         [UIView setAnimationDuration:3.0];
+         [goalTitleTextField setBackgroundColor:[UIColor whiteColor]];
+         [UIView commitAnimations];
+         }];
+         */
         [UIView animateWithDuration:1.0
                          animations:^{
                              [goalTitleTextField setBackgroundColor:[UIColor colorWithRed:1.0
@@ -139,7 +118,7 @@
         
         [tmpLabel setFrame:CGRectMake(0, 0,
                                       screenRect.size.width*2/3, 100)];
-
+        
         [tmpLabel setCenter:CGPointMake(screenRect.size.width/2, [startAtButton center].y+35)];
         [tmpLabel setText:@"Oh Snap!\n@Start > Finish@"];
         [tmpLabel setTextColor:[UIColor colorWithRed:1.0
@@ -161,6 +140,8 @@
     }
     
     if (![[goalTitleTextField text] isEqual:@""] && [self checkTime]) {
+        [self saveUIValuesToSavedGoal];
+        [[[ASTimeProcess alloc] init] setAlarmForGoal:savedGoal];
         
         [[self presentingViewController]
          dismissViewControllerAnimated:YES
@@ -169,109 +150,8 @@
     
 }
 
-- (IBAction)cancelNewGoal:(id)sender
+- (void)saveUIValuesToSavedGoal
 {
-    // If the user cancelled, then remove the ASGoal from the store
-    [[ASGoalStore sharedStore] removeGoal:savedGoal];
-    savedGoal = nil;
-    
-    [[self presentingViewController]
-     dismissViewControllerAnimated:YES completion:dismissBlock];
-}
-
-- (IBAction)cancel:(id)sender
-{
-    // Reset all form to savedGoal data
-    ASTimeProcess *timeProcess = [[ASTimeProcess alloc] init];
-    
-    NSArray *colors = [NSArray arrayWithObjects:[UIColor grayColor],
-                       [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0], nil];
-    [monButton setTitleColor:[colors objectAtIndex:[copyGoal monday]] forState:UIControlStateNormal];
-    [tueButton setTitleColor:[colors objectAtIndex:[copyGoal tuesday]] forState:UIControlStateNormal];
-    [wedButton setTitleColor:[colors objectAtIndex:[copyGoal wednesday]] forState:UIControlStateNormal];
-    [thuButton setTitleColor:[colors objectAtIndex:[copyGoal thursday]] forState:UIControlStateNormal];
-    [friButton setTitleColor:[colors objectAtIndex:[copyGoal friday]] forState:UIControlStateNormal];
-    [satButton setTitleColor:[colors objectAtIndex:[copyGoal saturday]] forState:UIControlStateNormal];
-    [sunButton setTitleColor:[colors objectAtIndex:[copyGoal sunday]] forState:UIControlStateNormal];
-    
-    [remindMeSwitch setOn:[copyGoal remindMe]];
-    [goalTitleTextField setText:[copyGoal title]];
-    [startAtButton setTitle:[timeProcess timeIntervalToString:[copyGoal everydayStartAt]]
-                   forState:UIControlStateNormal];
-    [finishAtButton setTitle:[timeProcess timeIntervalToString:[copyGoal everydayFinishAt]]
-                    forState:UIControlStateNormal];
-
-    
-    // Move back
-    [[self presentingViewController]
-     dismissViewControllerAnimated:YES completion:dismissBlock];
-}
-
-- (BOOL)checkTime
-{
-    BOOL resultBoolean = NO;
-    
-    ASTimeProcess *timeProcess = [[ASTimeProcess alloc] init];
-    NSInteger tp1 = [timeProcess
-                     timePointToInt:
-                     [timeProcess stringToDate:[[startAtButton titleLabel] text]]
-                     ];
-    NSInteger tp2 = [timeProcess
-                     timePointToInt:
-                     [timeProcess stringToDate:[[finishAtButton titleLabel] text]]
-                     ];
-    if (tp1 <= tp2) {
-        resultBoolean = YES;
-    }
-    
-    return resultBoolean;
-}
-
-
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:YES];
-    
-    if (![[savedGoal title] isEqual:@""]) {
-        ASTimeProcess *timeProcess = [[ASTimeProcess alloc] init];
-        
-        NSArray *colors = [NSArray arrayWithObjects:[UIColor grayColor],
-                           [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0], nil];
-        [monButton setTitleColor:[colors objectAtIndex:[savedGoal monday]] forState:UIControlStateNormal];
-        [tueButton setTitleColor:[colors objectAtIndex:[savedGoal tuesday]] forState:UIControlStateNormal];
-        [wedButton setTitleColor:[colors objectAtIndex:[savedGoal wednesday]] forState:UIControlStateNormal];
-        [thuButton setTitleColor:[colors objectAtIndex:[savedGoal thursday]] forState:UIControlStateNormal];
-        [friButton setTitleColor:[colors objectAtIndex:[savedGoal friday]] forState:UIControlStateNormal];
-        [satButton setTitleColor:[colors objectAtIndex:[savedGoal saturday]] forState:UIControlStateNormal];
-        [sunButton setTitleColor:[colors objectAtIndex:[savedGoal sunday]] forState:UIControlStateNormal];
-        
-        [remindMeSwitch setOn:[savedGoal remindMe]];
-        [goalTitleTextField setText:[savedGoal title]];
-        [startAtButton setTitle:[timeProcess timeIntervalToString:[savedGoal everydayStartAt]]
-                       forState:UIControlStateNormal];
-        [finishAtButton setTitle:[timeProcess timeIntervalToString:[savedGoal everydayFinishAt]]
-                        forState:UIControlStateNormal];
-    } else {
-        ASTimeProcess *timeProcess = [[ASTimeProcess alloc] init];
-        [startAtButton setTitle:[timeProcess timeIntervalToString:[NSDate timeIntervalSinceReferenceDate]]
-                       forState:UIControlStateNormal];
-        [finishAtButton setTitle:[timeProcess timeIntervalToString:[NSDate timeIntervalSinceReferenceDate]]
-                        forState:UIControlStateNormal];
-    }
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:YES];
-    
     // Clear first responder
     [[self view] endEditing:YES];
     
@@ -324,6 +204,167 @@
     } else {
         [savedGoal setSunday:YES];
     }
+    
+}
+
+- (IBAction)cancelNewGoal:(id)sender
+{
+    // If the user cancelled, then remove the ASGoal from the store
+    [[ASGoalStore sharedStore] removeGoal:savedGoal];
+    savedGoal = nil;
+    
+    [[self presentingViewController]
+     dismissViewControllerAnimated:YES completion:dismissBlock];
+}
+
+- (IBAction)cancel:(id)sender
+{
+    // Reset all form to savedGoal data
+    ASTimeProcess *timeProcess = [[ASTimeProcess alloc] init];
+    
+    NSArray *colors = [NSArray arrayWithObjects:[UIColor grayColor],
+                       [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0], nil];
+    [monButton setTitleColor:[colors objectAtIndex:[copyGoal monday]] forState:UIControlStateNormal];
+    [tueButton setTitleColor:[colors objectAtIndex:[copyGoal tuesday]] forState:UIControlStateNormal];
+    [wedButton setTitleColor:[colors objectAtIndex:[copyGoal wednesday]] forState:UIControlStateNormal];
+    [thuButton setTitleColor:[colors objectAtIndex:[copyGoal thursday]] forState:UIControlStateNormal];
+    [friButton setTitleColor:[colors objectAtIndex:[copyGoal friday]] forState:UIControlStateNormal];
+    [satButton setTitleColor:[colors objectAtIndex:[copyGoal saturday]] forState:UIControlStateNormal];
+    [sunButton setTitleColor:[colors objectAtIndex:[copyGoal sunday]] forState:UIControlStateNormal];
+    
+    [remindMeSwitch setOn:[copyGoal remindMe]];
+    [goalTitleTextField setText:[copyGoal title]];
+    [startAtButton setTitle:[timeProcess timeIntervalToString:[copyGoal everydayStartAt]]
+                   forState:UIControlStateNormal];
+    [finishAtButton setTitle:[timeProcess timeIntervalToString:[copyGoal everydayFinishAt]]
+                    forState:UIControlStateNormal];
+    
+    
+    // Move back
+    [[self presentingViewController]
+     dismissViewControllerAnimated:YES completion:dismissBlock];
+}
+
+- (BOOL)checkTime
+{
+    BOOL resultBoolean = NO;
+    
+    ASTimeProcess *timeProcess = [[ASTimeProcess alloc] init];
+    NSInteger tp1 = [timeProcess
+                     timePointToInt:
+                     [timeProcess stringToDate:[[startAtButton titleLabel] text]]
+                     ];
+    NSInteger tp2 = [timeProcess
+                     timePointToInt:
+                     [timeProcess stringToDate:[[finishAtButton titleLabel] text]]
+                     ];
+    if (tp1 <= tp2) {
+        resultBoolean = YES;
+    }
+    
+    return resultBoolean;
+}
+
+
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    
+    if ([copyGoal everydayStartAt]) {
+        ASTimeProcess *timeProcess = [[ASTimeProcess alloc] init];
+        
+        NSArray *colors = [NSArray arrayWithObjects:[UIColor grayColor],
+                           [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0], nil];
+        [monButton setTitleColor:[colors objectAtIndex:[copyGoal monday]] forState:UIControlStateNormal];
+        [tueButton setTitleColor:[colors objectAtIndex:[copyGoal tuesday]] forState:UIControlStateNormal];
+        [wedButton setTitleColor:[colors objectAtIndex:[copyGoal wednesday]] forState:UIControlStateNormal];
+        [thuButton setTitleColor:[colors objectAtIndex:[copyGoal thursday]] forState:UIControlStateNormal];
+        [friButton setTitleColor:[colors objectAtIndex:[copyGoal friday]] forState:UIControlStateNormal];
+        [satButton setTitleColor:[colors objectAtIndex:[copyGoal saturday]] forState:UIControlStateNormal];
+        [sunButton setTitleColor:[colors objectAtIndex:[copyGoal sunday]] forState:UIControlStateNormal];
+        
+        [remindMeSwitch setOn:[copyGoal remindMe]];
+        [goalTitleTextField setText:[copyGoal title]];
+        [startAtButton setTitle:[timeProcess timeIntervalToString:[copyGoal everydayStartAt]]
+                       forState:UIControlStateNormal];
+        [finishAtButton setTitle:[timeProcess timeIntervalToString:[copyGoal everydayFinishAt]]
+                        forState:UIControlStateNormal];
+    } else {
+        ASTimeProcess *timeProcess = [[ASTimeProcess alloc] init];
+        [startAtButton setTitle:[timeProcess timeIntervalToString:[NSDate timeIntervalSinceReferenceDate]]
+                       forState:UIControlStateNormal];
+        [finishAtButton setTitle:[timeProcess timeIntervalToString:[NSDate timeIntervalSinceReferenceDate]]
+                        forState:UIControlStateNormal];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:YES];
+
+    
+    // Save to the copyGoal in case of enter time picker
+    // Clear first responder
+    [[self view] endEditing:YES];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterNoStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    
+    ASTimeProcess *timeProcess = [[ASTimeProcess alloc] init];
+    NSDate* tp1 = [timeProcess stringToDate:[[startAtButton titleLabel] text]];
+    NSDate* tp2 = [timeProcess stringToDate:[[finishAtButton titleLabel] text]];
+    
+    // "Save" changes to goal
+    [copyGoal setTitle:[goalTitleTextField text]];
+    [copyGoal setRemindMe:[remindMeSwitch isOn]];
+    [copyGoal setEverydayStartAt:[tp1 timeIntervalSinceReferenceDate]];
+    [copyGoal setEverydayFinishAt:[tp2 timeIntervalSinceReferenceDate]];
+    
+    if ([monButton titleColorForState:UIControlStateNormal] == [UIColor grayColor]) {
+        [copyGoal setMonday:NO];
+    } else {
+        [copyGoal setMonday:YES];
+    }
+    if ([tueButton titleColorForState:UIControlStateNormal] == [UIColor grayColor]) {
+        [copyGoal setTuesday:NO];
+    } else {
+        [copyGoal setTuesday:YES];
+    }
+    if ([wedButton titleColorForState:UIControlStateNormal] == [UIColor grayColor]) {
+        [copyGoal setWednesday:NO];
+    } else {
+        [copyGoal setWednesday:YES];
+    }
+    if ([thuButton titleColorForState:UIControlStateNormal] == [UIColor grayColor]) {
+        [copyGoal setThursday:NO];
+    } else {
+        [copyGoal setThursday:YES];
+    }
+    if ([friButton titleColorForState:UIControlStateNormal] == [UIColor grayColor]) {
+        [copyGoal setFriday:NO];
+    } else {
+        [copyGoal setFriday:YES];
+    }
+    if ([satButton titleColorForState:UIControlStateNormal] == [UIColor grayColor]) {
+        [copyGoal setSaturday:NO];
+    } else {
+        [copyGoal setSaturday:YES];
+    }
+    if ([sunButton titleColorForState:UIControlStateNormal] == [UIColor grayColor]) {
+        [copyGoal setSunday:NO];
+    } else {
+        [copyGoal setSunday:YES];
+    }
+
     
 }
 
@@ -389,13 +430,13 @@
 
 - (IBAction)startAtClick:(id)sender {
     ASTimePickerViewController *tpc = [[ASTimePickerViewController alloc]
-                                       initFor:savedGoal];
+                                       initFor:copyGoal];
     [[self navigationController] pushViewController:tpc animated:YES];
 }
 
 - (IBAction)finishAtClick:(id)sender {
     ASTimePickerViewController *tpc = [[ASTimePickerViewController alloc]
-                                       initFor:savedGoal];
+                                       initFor:copyGoal];
     [[self navigationController] pushViewController:tpc animated:YES];
     
 }

@@ -27,4 +27,9 @@
 - (float)accuracyOf:(ASRecord *)record accordingTo:(ASGoal *)goal;
 - (NSDate *)dateFromTimeInterval:(NSTimeInterval)timeInterval;
 - (NSString *)timeStringFromTimeInterval:(NSTimeInterval)timeInterval;
+- (NSDate *)setAlarmTimeToHour:(NSInteger)hour andToMinute:(NSInteger)minute;
+- (NSString *)goalIDString:(NSTimeInterval)createdDateOfGoal;
+- (NSString *)alarmIDString:(NSTimeInterval)createdDateOfGoal forWeekday:(NSInteger)weekday;
+- (void)setAlarmForGoal:(ASGoal *)g;
+- (void)removeAlarmForGoal:(ASGoal *)g;
 @end
