@@ -45,6 +45,8 @@
 		D8E8BD711883483F00DEED0E /* launchImage-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BD6B1883483F00DEED0E /* launchImage-Portrait@2x~ipad.png */; };
 		D8E8BD721883483F00DEED0E /* launchImage-Portrait@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BD6C1883483F00DEED0E /* launchImage-Portrait@2x~iphone.png */; };
 		D8E8BD731883483F00DEED0E /* launchImage-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BD6D1883483F00DEED0E /* launchImage-Portrait~ipad.png */; };
+		D8E8BD761883519A00DEED0E /* ringtones128.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BD751883519A00DEED0E /* ringtones128.png */; };
+		D8E8BD78188352CF00DEED0E /* rorIcon40.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BD77188352CF00DEED0E /* rorIcon40.png */; };
 		D8F9C6D7187C72440033B5C4 /* ASGoalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F9C6D6187C72440033B5C4 /* ASGoalCell.m */; };
 		D8F9C6D9187C72650033B5C4 /* ASGoalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8F9C6D8187C72650033B5C4 /* ASGoalCell.xib */; };
 		D8F9C6DC187C7AF70033B5C4 /* ASRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F9C6DB187C7AF70033B5C4 /* ASRandom.m */; };
@@ -117,6 +119,8 @@
 		D8E8BD6B1883483F00DEED0E /* launchImage-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launchImage-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
 		D8E8BD6C1883483F00DEED0E /* launchImage-Portrait@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launchImage-Portrait@2x~iphone.png"; sourceTree = "<group>"; };
 		D8E8BD6D1883483F00DEED0E /* launchImage-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launchImage-Portrait~ipad.png"; sourceTree = "<group>"; };
+		D8E8BD751883519A00DEED0E /* ringtones128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ringtones128.png; sourceTree = "<group>"; };
+		D8E8BD77188352CF00DEED0E /* rorIcon40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rorIcon40.png; sourceTree = "<group>"; };
 		D8F9C6D5187C72440033B5C4 /* ASGoalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASGoalCell.h; sourceTree = "<group>"; };
 		D8F9C6D6187C72440033B5C4 /* ASGoalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGoalCell.m; sourceTree = "<group>"; };
 		D8F9C6D8187C72650033B5C4 /* ASGoalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASGoalCell.xib; sourceTree = "<group>"; };
@@ -314,6 +318,7 @@
 			children = (
 				D8E8BD671883483300DEED0E /* LaunchImages */,
 				D8E8BD5418833BFD00DEED0E /* AppIcons */,
+				D8E8BD74188349FB00DEED0E /* AppImages */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -345,6 +350,15 @@
 				D8E8BD6D1883483F00DEED0E /* launchImage-Portrait~ipad.png */,
 			);
 			name = LaunchImages;
+			sourceTree = "<group>";
+		};
+		D8E8BD74188349FB00DEED0E /* AppImages */ = {
+			isa = PBXGroup;
+			children = (
+				D8E8BD77188352CF00DEED0E /* rorIcon40.png */,
+				D8E8BD751883519A00DEED0E /* ringtones128.png */,
+			);
+			name = AppImages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -427,6 +441,7 @@
 				D83DD075187B3BEC0092D155 /* InfoPlist.strings in Resources */,
 				D8DE0A60187ED18A00BAFC3A /* ASRecordCell.xib in Resources */,
 				D8E8BD6218833E6D00DEED0E /* spockGoal-Spotlight@2x~iphone.png in Resources */,
+				D8E8BD78188352CF00DEED0E /* rorIcon40.png in Resources */,
 				D8E8BD5E18833E6D00DEED0E /* spockGoal-Settings@2x~ipad.png in Resources */,
 				D8E8BD6018833E6D00DEED0E /* spockGoal-Settings~ipad.png in Resources */,
 				D8E8BD6318833E6D00DEED0E /* spockGoal-Spotlight~ipad.png in Resources */,
@@ -438,6 +453,7 @@
 				D8E8BD6618833E6D00DEED0E /* spockGoal~ipad.png in Resources */,
 				D8E8BD6118833E6D00DEED0E /* spockGoal-Spotlight@2x~ipad.png in Resources */,
 				D8E8BD6E1883483F00DEED0E /* launchImage-Lanscape@2x~ipad.png in Resources */,
+				D8E8BD761883519A00DEED0E /* ringtones128.png in Resources */,
 				D8DE0A6B1880C22800BAFC3A /* Illuminate.m4r in Resources */,
 				D8DE0A5B187E982900BAFC3A /* ASTimerViewController.xib in Resources */,
 				D8F9C6D9187C72650033B5C4 /* ASGoalCell.xib in Resources */,
