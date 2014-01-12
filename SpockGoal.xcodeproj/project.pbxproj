@@ -54,7 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D83DD067187B3BEC0092D155 /* SpockGoal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpockGoal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D83DD067187B3BEC0092D155 /* Spock Goal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spock Goal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D83DD06A187B3BEC0092D155 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D83DD06C187B3BEC0092D155 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D83DD06E187B3BEC0092D155 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -146,7 +146,7 @@
 		D83DD068187B3BEC0092D155 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D83DD067187B3BEC0092D155 /* SpockGoal.app */,
+				D83DD067187B3BEC0092D155 /* Spock Goal.app */,
 				D83DD082187B3BEC0092D155 /* SpockGoalTests.xctest */,
 			);
 			name = Products;
@@ -168,6 +168,7 @@
 		D83DD070187B3BEC0092D155 /* SpockGoal */ = {
 			isa = PBXGroup;
 			children = (
+				D8E8BD5318833BF700DEED0E /* Images */,
 				D8DE0A691880C20F00BAFC3A /* Sounds */,
 				D83DD07C187B3BEC0092D155 /* Images.xcassets */,
 				D83DD079187B3BEC0092D155 /* ASAppDelegate.h */,
@@ -278,6 +279,21 @@
 			name = Sounds;
 			sourceTree = "<group>";
 		};
+		D8E8BD5318833BF700DEED0E /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				D8E8BD5418833BFD00DEED0E /* AppIcons */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		D8E8BD5418833BFD00DEED0E /* AppIcons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = AppIcons;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -295,7 +311,7 @@
 			);
 			name = SpockGoal;
 			productName = SpockGoal;
-			productReference = D83DD067187B3BEC0092D155 /* SpockGoal.app */;
+			productReference = D83DD067187B3BEC0092D155 /* Spock Goal.app */;
 			productType = "com.apple.product-type.application";
 		};
 		D83DD081187B3BEC0092D155 /* SpockGoalTests */ = {
@@ -517,7 +533,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpockGoal/SpockGoal-Prefix.pch";
 				INFOPLIST_FILE = "SpockGoal/SpockGoal-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Spock Goal";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -530,7 +546,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpockGoal/SpockGoal-Prefix.pch";
 				INFOPLIST_FILE = "SpockGoal/SpockGoal-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Spock Goal";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
