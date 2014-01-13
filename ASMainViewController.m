@@ -347,6 +347,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                          withRowAnimation:UITableViewRowAnimationFade];
         
+        // check if it deleted the last goal
+        [self checkForEmptyGoal];
+        
     }
 }
 
@@ -411,6 +414,37 @@ moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
     [self setEditing:NO animated:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    [self checkForEmptyGoal];
+}
+
+- (void)checkForEmptyGoal
+{
+    if ([[[ASGoalStore sharedStore] allGoals] count] == 0) {
+//        UIView *emptyView = [[UIView alloc] initWithFrame:self.tableView.frame];
+        UIImageView *emptyView = [[UIImageView alloc] initWithFrame:[[self tableView] frame]];
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            if (UIDeviceOrientationIsPortrait([self interfaceOrientation])) {
+                [emptyView setImage:[UIImage imageNamed:@"emptyView-Portrait.png"]];
+            } else {
+                [emptyView setImage:[UIImage imageNamed:@"emptyView-Landscape.png"]];
+            }
+        } else {
+            [emptyView setImage:[UIImage imageNamed:@"emptyView-Portrait@2x~iphone.png"]];
+        }
+        
+        /* Customize your view here or load it from a NIB */
+        self.tableView.tableHeaderView = emptyView;
+        self.tableView.userInteractionEnabled = NO;
+    } else {
+        self.tableView.tableHeaderView = nil;
+        self.tableView.userInteractionEnabled = YES;
+    }
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [self checkForEmptyGoal];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

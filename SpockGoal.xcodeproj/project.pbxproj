@@ -56,6 +56,12 @@
 		D8E8BD8E1883796100DEED0E /* timerBackground@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BD8A1883796100DEED0E /* timerBackground@2x~iphone.png */; };
 		D8E8BD8F1883796100DEED0E /* timerBackground~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BD8B1883796100DEED0E /* timerBackground~ipad.png */; };
 		D8E8BD911883981700DEED0E /* dash.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BD901883981700DEED0E /* dash.png */; };
+		D8E8BDA61883BB3F00DEED0E /* emptyView-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BDA21883BB3F00DEED0E /* emptyView-Landscape@2x~ipad.png */; };
+		D8E8BDA71883BB3F00DEED0E /* emptyView-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BDA31883BB3F00DEED0E /* emptyView-Landscape~ipad.png */; };
+		D8E8BDB01883BFC000DEED0E /* emptyView-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BDAE1883BFC000DEED0E /* emptyView-Portrait@2x~ipad.png */; };
+		D8E8BDB11883BFC000DEED0E /* emptyView-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BDAF1883BFC000DEED0E /* emptyView-Portrait~ipad.png */; };
+		D8E8BDB71883C2AA00DEED0E /* emptyView-Portrait@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BDB61883C2AA00DEED0E /* emptyView-Portrait@2x~iphone.png */; };
+		D8E8BDB91883C39D00DEED0E /* emptyView-Portrait-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BDB81883C39D00DEED0E /* emptyView-Portrait-568h@2x~iphone.png */; };
 		D8F9C6D7187C72440033B5C4 /* ASGoalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F9C6D6187C72440033B5C4 /* ASGoalCell.m */; };
 		D8F9C6D9187C72650033B5C4 /* ASGoalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8F9C6D8187C72650033B5C4 /* ASGoalCell.xib */; };
 		D8F9C6DC187C7AF70033B5C4 /* ASRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F9C6DB187C7AF70033B5C4 /* ASRandom.m */; };
@@ -140,6 +146,12 @@
 		D8E8BD8A1883796100DEED0E /* timerBackground@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timerBackground@2x~iphone.png"; sourceTree = "<group>"; };
 		D8E8BD8B1883796100DEED0E /* timerBackground~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timerBackground~ipad.png"; sourceTree = "<group>"; };
 		D8E8BD901883981700DEED0E /* dash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dash.png; sourceTree = "<group>"; };
+		D8E8BDA21883BB3F00DEED0E /* emptyView-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "emptyView-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		D8E8BDA31883BB3F00DEED0E /* emptyView-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "emptyView-Landscape~ipad.png"; sourceTree = "<group>"; };
+		D8E8BDAE1883BFC000DEED0E /* emptyView-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "emptyView-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		D8E8BDAF1883BFC000DEED0E /* emptyView-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "emptyView-Portrait~ipad.png"; sourceTree = "<group>"; };
+		D8E8BDB61883C2AA00DEED0E /* emptyView-Portrait@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "emptyView-Portrait@2x~iphone.png"; sourceTree = "<group>"; };
+		D8E8BDB81883C39D00DEED0E /* emptyView-Portrait-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "emptyView-Portrait-568h@2x~iphone.png"; sourceTree = "<group>"; };
 		D8F9C6D5187C72440033B5C4 /* ASGoalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASGoalCell.h; sourceTree = "<group>"; };
 		D8F9C6D6187C72440033B5C4 /* ASGoalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGoalCell.m; sourceTree = "<group>"; };
 		D8F9C6D8187C72650033B5C4 /* ASGoalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASGoalCell.xib; sourceTree = "<group>"; };
@@ -364,6 +376,12 @@
 		D8E8BD671883483300DEED0E /* LaunchImages */ = {
 			isa = PBXGroup;
 			children = (
+				D8E8BDB81883C39D00DEED0E /* emptyView-Portrait-568h@2x~iphone.png */,
+				D8E8BDB61883C2AA00DEED0E /* emptyView-Portrait@2x~iphone.png */,
+				D8E8BDAE1883BFC000DEED0E /* emptyView-Portrait@2x~ipad.png */,
+				D8E8BDAF1883BFC000DEED0E /* emptyView-Portrait~ipad.png */,
+				D8E8BDA21883BB3F00DEED0E /* emptyView-Landscape@2x~ipad.png */,
+				D8E8BDA31883BB3F00DEED0E /* emptyView-Landscape~ipad.png */,
 				D8E8BD681883483F00DEED0E /* launchImage-Lanscape@2x~ipad.png */,
 				D8E8BD691883483F00DEED0E /* launchImage-Lanscape~ipad.png */,
 				D8E8BD6A1883483F00DEED0E /* launchImage-Portrait-568h@2x~iphone.png */,
@@ -477,24 +495,30 @@
 				D8E8BD8F1883796100DEED0E /* timerBackground~ipad.png in Resources */,
 				D8E8BD6018833E6D00DEED0E /* spockGoal-Settings~ipad.png in Resources */,
 				D8E8BD6318833E6D00DEED0E /* spockGoal-Spotlight~ipad.png in Resources */,
+				D8E8BDA71883BB3F00DEED0E /* emptyView-Landscape~ipad.png in Resources */,
 				D83DD07D187B3BEC0092D155 /* Images.xcassets in Resources */,
 				D8E8BD6518833E6D00DEED0E /* spockGoal@2x~iphone.png in Resources */,
 				D8E8BD5F18833E6D00DEED0E /* spockGoal-Settings@2x~iphone.png in Resources */,
 				D8E8BD721883483F00DEED0E /* launchImage-Portrait@2x~iphone.png in Resources */,
 				D8E8BD711883483F00DEED0E /* launchImage-Portrait@2x~ipad.png in Resources */,
 				D8E8BD6618833E6D00DEED0E /* spockGoal~ipad.png in Resources */,
+				D8E8BDB71883C2AA00DEED0E /* emptyView-Portrait@2x~iphone.png in Resources */,
 				D8E8BD6118833E6D00DEED0E /* spockGoal-Spotlight@2x~ipad.png in Resources */,
 				D8E8BD6E1883483F00DEED0E /* launchImage-Lanscape@2x~ipad.png in Resources */,
 				D8E8BD761883519A00DEED0E /* ringtones128.png in Resources */,
 				D8DE0A6B1880C22800BAFC3A /* Illuminate.m4r in Resources */,
 				D8DE0A5B187E982900BAFC3A /* ASTimerViewController.xib in Resources */,
 				D8E8BD7E18836FF400DEED0E /* navBar.png in Resources */,
+				D8E8BDB11883BFC000DEED0E /* emptyView-Portrait~ipad.png in Resources */,
 				D8F9C6D9187C72650033B5C4 /* ASGoalCell.xib in Resources */,
+				D8E8BDA61883BB3F00DEED0E /* emptyView-Landscape@2x~ipad.png in Resources */,
 				D8E8BD6F1883483F00DEED0E /* launchImage-Lanscape~ipad.png in Resources */,
 				D8E8BD701883483F00DEED0E /* launchImage-Portrait-568h@2x~iphone.png in Resources */,
+				D8E8BDB91883C39D00DEED0E /* emptyView-Portrait-568h@2x~iphone.png in Resources */,
 				D8E8BD8D1883796100DEED0E /* timerBackground@2x~ipad.png in Resources */,
 				D8E8BD8E1883796100DEED0E /* timerBackground@2x~iphone.png in Resources */,
 				D8E8BD731883483F00DEED0E /* launchImage-Portrait~ipad.png in Resources */,
+				D8E8BDB01883BFC000DEED0E /* emptyView-Portrait@2x~ipad.png in Resources */,
 				D8F9C6FB187CD83C0033B5C4 /* ASTimePickerViewController.xib in Resources */,
 				D8E8BD8C1883796100DEED0E /* timerBackground-568h@2x~iphone.png in Resources */,
 				D8F9C6F0187CAF0F0033B5C4 /* ASGoalFormViewController.xib in Resources */,
