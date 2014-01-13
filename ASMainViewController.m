@@ -16,6 +16,7 @@
 #import "ASTimerViewController.h"
 #import "ASRecordListController.h"
 #import "ASTimeProcess.h"
+#import "NSDate+TimeAgo.h"
 
 #define ASLog(...) NSLog(__VA_ARGS__)
 
@@ -26,20 +27,47 @@
     // Call the superclass's designated initializer
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        // Create a new bar button item that will send
-        // addNewGoal: to MainViewController
-        UINavigationItem *navItem = [self navigationItem];
-        [navItem setTitle:@"SpockGoal"];
-        UIBarButtonItem *bbi = [[UIBarButtonItem alloc]
-                                initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                target:self
-                                action:@selector(addNewGoal:)];
-        // Set this bar button item as the right item in the navigationItem
-        [[self navigationItem] setRightBarButtonItem:bbi];
-        [[self navigationItem] setLeftBarButtonItem:[self editButtonItem]];
-        
+        [self setupTableViewUI];
     }
     return self;
+}
+
+- (void)setupTableViewUI
+{
+    // Set Custom UI for navBar
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navBar.png"]
+                                       forBarMetrics:UIBarMetricsDefault];
+
+    
+    // Create a new bar button item that will send
+    // addNewGoal: to MainViewController
+    UINavigationItem *navItem = [self navigationItem];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+    label.backgroundColor = [UIColor clearColor];
+    [label setFrame:CGRectMake(0, 0, 100, 35)];
+    label.font = [UIFont boldSystemFontOfSize:22.0];
+    label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor whiteColor];
+    label.text = @"Spock Goal";
+    
+    [navItem setTitleView:label];
+    
+    UIBarButtonItem *bbi = [[UIBarButtonItem alloc]
+                            initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                            target:self
+                            action:@selector(addNewGoal:)];
+    // Set color for bar button item
+    [bbi setTintColor:[UIColor whiteColor]];
+    [[self editButtonItem] setTintColor:[UIColor whiteColor]];
+    
+    // Set this bar button item as the right item in the navigationItem
+    [[self navigationItem] setRightBarButtonItem:bbi];
+    [[self navigationItem] setLeftBarButtonItem:[self editButtonItem]];
+    
+    [[self tableView] setSeparatorInset:UIEdgeInsetsZero];
+    //[[self tableView] setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
 }
 
 - (IBAction)addNewGoal:(id)sender
@@ -83,8 +111,144 @@
     float accumulatedHours = [g accumulatedHours];
     [[cell accumulatedHourLabel] setText:[NSString stringWithFormat:@"%.2fh", accumulatedHours]];
     
+    [self setupCellUI:cell forGoal:g];
+    
     return cell;
 }
+
+- (void)setupCellUI:(ASGoalCell *)cell forGoal:(ASGoal *)g
+{
+    
+    // Set background color to light blue
+    [[cell accumulatedHourLabel] setBackgroundColor:[UIColor colorWithRed:91.0/255.0
+                                                             green:192.0/255.0
+                                                              blue:222.0/255.0 alpha:1.0]];
+    
+    [[cell accumulatedHourLabel] setTextColor:[UIColor whiteColor]];
+    [[[cell accumulatedHourLabel] layer] setCornerRadius:10.0];
+    
+    
+    [[[cell iconImage] layer] setCornerRadius:20];
+    [[[cell iconImage] layer] setBorderWidth:1.0];
+    [[[cell iconImage] layer] setBorderColor:[[UIColor colorWithRed:164.0/255.0
+                                                       green:16.0/255.0
+                                                        blue:52.0/255.0
+                                                       alpha:1.0] CGColor]];
+    [[[cell iconImage] layer] setBackgroundColor:[[UIColor colorWithRed:164.0/255.0
+                                                           green:16.0/255.0
+                                                            blue:52.0/255.0
+                                                           alpha:1.0] CGColor]];
+    [[[cell iconImage] layer] setMasksToBounds:YES];
+    [[cell iconImage] sizeToFit];
+    
+    
+    //-----------
+    ASRecord *lastRecord = [[ASGoalStore sharedStore] newestRecordOfGoal:g];
+    
+    if (lastRecord) {
+        NSDate *date = [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:
+                        [lastRecord realStartAt]];
+        
+        
+        NSString *lastTime = [date timeAgo];
+        [[cell lastTimeLabel] setText:lastTime];
+    } else {
+        [[cell lastTimeLabel] setText:@"No record"];
+    }
+    
+    
+    ASTimeProcess *timeProcess = [[ASTimeProcess alloc] init];
+    [[cell scheduleLabel] setText:[NSString stringWithFormat:@"%@ - %@",
+                                   [timeProcess timeIntervalToString:[g everydayStartAt]],
+                                   [timeProcess timeIntervalToString:[g everydayFinishAt]]]];
+    if ([g monday]) {
+        [[cell mondayLabel] setTextColor:[UIColor colorWithRed:0.0
+                                                         green:0.0
+                                                          blue:0.0
+                                                         alpha:0.7]];
+    } else {
+        [[cell mondayLabel] setTextColor:[UIColor colorWithRed:0.0
+                                                         green:0.0
+                                                          blue:0.0
+                                                         alpha:0.2]];
+    }
+    
+    if ([g tuesday]) {
+        [[cell tuesdayLabel] setTextColor:[UIColor colorWithRed:0.0
+                                                          green:0.0
+                                                           blue:0.0
+                                                          alpha:0.7]];
+    } else {
+        [[cell tuesdayLabel] setTextColor:[UIColor colorWithRed:0.0
+                                                          green:0.0
+                                                           blue:0.0
+                                                          alpha:0.2]];
+    }
+    if ([g wednesday]) {
+        [[cell wednesdayLabel] setTextColor:[UIColor colorWithRed:0.0
+                                                            green:0.0
+                                                             blue:0.0
+                                                            alpha:0.7]];
+    } else {
+        [[cell wednesdayLabel] setTextColor:[UIColor colorWithRed:0.0
+                                                            green:0.0
+                                                             blue:0.0
+                                                            alpha:0.2]];
+    }
+    if ([g thursday]) {
+        [[cell thursdayLabel] setTextColor:[UIColor colorWithRed:0.0
+                                                           green:0.0
+                                                            blue:0.0
+                                                           alpha:0.7]];
+    } else {
+        [[cell thursdayLabel] setTextColor:[UIColor colorWithRed:0.0
+                                                           green:0.0
+                                                            blue:0.0
+                                                           alpha:0.2]];
+    }
+    if ([g friday]) {
+        [[cell fridayLabel] setTextColor:[UIColor colorWithRed:0.0
+                                                         green:0.0
+                                                          blue:0.0
+                                                         alpha:0.7]];
+    } else {
+        [[cell fridayLabel] setTextColor:[UIColor colorWithRed:0.0
+                                                         green:0.0
+                                                          blue:0.0
+                                                         alpha:0.2]];
+    }
+    if ([g saturday]) {
+        [[cell saturdayLabel] setTextColor:[UIColor colorWithRed:0.0
+                                                           green:0.0
+                                                            blue:0.0
+                                                           alpha:0.7]];
+    } else {
+        [[cell saturdayLabel] setTextColor:[UIColor colorWithRed:0.0
+                                                           green:0.0
+                                                            blue:0.0
+                                                           alpha:0.2]];
+    }
+    if ([g sunday]) {
+        [[cell sundayLabel] setTextColor:[UIColor colorWithRed:0.0
+                                                         green:0.0
+                                                          blue:0.0
+                                                         alpha:0.7]];
+    } else {
+        [[cell sundayLabel] setTextColor:[UIColor colorWithRed:0.0
+                                                         green:0.0
+                                                          blue:0.0
+                                                         alpha:0.2]];
+    }
+    
+    if ([g remindMe]) {
+        [[cell alarmIcon] setHidden:NO];
+    } else {
+        [[cell alarmIcon] setHidden:YES];
+    }
+    
+}
+
+
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -218,6 +382,24 @@ moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
     [super viewDidLoad];
     UINib *nib = [UINib nibWithNibName:@"ASGoalCell" bundle:nil];
     [[self tableView] registerNib:nib forCellReuseIdentifier:@"ASGoalCell"];
+    
+    // Add refresh when pull
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+    
+    [refresh addTarget:self action:@selector(reloadTableView:)
+     
+      forControlEvents:UIControlEventValueChanged];
+    
+    self.refreshControl = refresh;
+    
+}
+
+- (IBAction)reloadTableView:(id)sender
+{
+    [[self tableView] reloadData];
+    [[self refreshControl] endRefreshing];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -227,6 +409,8 @@ moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
     // turn off Editting mode so the right label can be shown
     // if not the new created goal hour label will be empty
     [self setEditing:NO animated:YES];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

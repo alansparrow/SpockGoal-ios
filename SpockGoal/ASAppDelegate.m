@@ -9,6 +9,7 @@
 #import "ASAppDelegate.h"
 #import "ASMainViewController.h"
 #import "ASGoalStore.h"
+#import "ASTimeProcess.h"
 
 #define ASLog(...) NSLog(__VA_ARGS__)
 
@@ -30,10 +31,25 @@
     // Place MainViewController's table view in the window hierarchy
     [[self window] setRootViewController:navController];
     
+    // Reset all alarm
+    [self resetAllAlarm];
+    
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)resetAllAlarm
+{
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    
+    ASTimeProcess *timeProcess = [[ASTimeProcess alloc] init];
+    NSArray *allGoals = [[ASGoalStore sharedStore] allGoals];
+    
+    for (ASGoal *g in allGoals) {
+        [timeProcess setAlarmForGoal:g];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

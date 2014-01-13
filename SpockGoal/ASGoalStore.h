@@ -33,4 +33,7 @@
                 toIndex:(int)to;
 
 - (BOOL)saveChanges;
+
+- (ASRecord *)newestRecordOfGoal:(ASGoal *)g;
+
 @end

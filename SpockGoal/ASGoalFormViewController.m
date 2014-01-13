@@ -38,7 +38,17 @@
     savedGoal = goal;
     copyGoal = [[ASGoalCopy alloc] initWith:goal];
     
-    [[self navigationItem] setTitle:[goal title]];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+    label.backgroundColor = [UIColor clearColor];
+    [label setFrame:CGRectMake(0, 0, 100, 35)];
+    label.font = [UIFont boldSystemFontOfSize:22.0];
+    label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor whiteColor];
+    label.text = [goal title];
+    
+    [[self navigationItem] setTitleView:label];
+    
     
     if (self) {
         if (isNew) {
@@ -46,24 +56,28 @@
                                         initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                         target:self
                                         action:@selector(save:)];
+            [doneItem setTintColor:[UIColor whiteColor]];
             [[self navigationItem] setRightBarButtonItem:doneItem];
             
             UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc]
                                            initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                            target:self
                                            action:@selector(cancelNewGoal:)]; // remove
+            [cancelItem setTintColor:[UIColor whiteColor]];
             [[self navigationItem] setLeftBarButtonItem:cancelItem];
         } else {
             UIBarButtonItem *doneItem =[[UIBarButtonItem alloc]
                                         initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                         target:self
                                         action:@selector(save:)];
+            [doneItem setTintColor:[UIColor whiteColor]];
             [[self navigationItem] setRightBarButtonItem:doneItem];
             
             UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc]
                                            initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                            target:self
                                            action:@selector(cancel:)];  // don't remove
+            [cancelItem setTintColor:[UIColor whiteColor]];
             [[self navigationItem] setLeftBarButtonItem:cancelItem];
             
         }
@@ -104,38 +118,26 @@
                          completion:^(BOOL finished) {
                              [UIView beginAnimations:@"fade in" context:nil];
                              [UIView setAnimationDuration:2.0];
-                             [goalTitleTextField setBackgroundColor:[UIColor whiteColor]];
+                             [goalTitleTextField setBackgroundColor:[UIColor clearColor]];
                              [UIView commitAnimations];
                          }];
         
     }
     
     if (![self checkTime]) {
-        CGRect screenRect = [[UIScreen mainScreen] bounds];
-        UILabel *tmpLabel = [[UILabel alloc] init];
-        [tmpLabel setNumberOfLines:0];
-        [tmpLabel setTextAlignment:NSTextAlignmentCenter];
-        
-        [tmpLabel setFrame:CGRectMake(0, 0,
-                                      screenRect.size.width*2/3, 100)];
-        
-        [tmpLabel setCenter:CGPointMake(screenRect.size.width/2, [startAtButton center].y+35)];
-        [tmpLabel setText:@"Oh Snap!\n@Start > Finish@"];
-        [tmpLabel setTextColor:[UIColor colorWithRed:1.0
-                                               green:0.0
-                                                blue:0.0
-                                               alpha:1.0]];
-        [[self view] addSubview:tmpLabel];
-        
-        // Create a basic animation
-        CABasicAnimation *fader = [CABasicAnimation animationWithKeyPath:@"opacity"];
-        [fader setDuration:4.0];
-        
-        [[tmpLabel layer] setOpacity:0.0];
-        
-        [fader setFromValue:[NSNumber numberWithFloat:1.0]];
-        [fader setToValue:[NSNumber numberWithFloat:0.0]];
-        [[tmpLabel layer] addAnimation:fader forKey:@"fader"];
+        [UIView animateWithDuration:1.0
+                         animations:^{
+                             [timeCheckImage setBackgroundColor:[UIColor colorWithRed:1.0
+                                                                                    green:182.0/255.0
+                                                                                     blue:193.0/255.0
+                                                                                    alpha:0.8]];
+                         }
+                         completion:^(BOOL finished) {
+                             [UIView beginAnimations:@"fade in" context:nil];
+                             [UIView setAnimationDuration:2.0];
+                             [timeCheckImage setBackgroundColor:[UIColor clearColor]];
+                             [UIView commitAnimations];
+                         }];
         
     }
     

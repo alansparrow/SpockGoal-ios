@@ -27,6 +27,16 @@
     if (self) {
         savedGoal = goal;
         
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+        label.backgroundColor = [UIColor clearColor];
+        [label setFrame:CGRectMake(0, 0, 100, 35)];
+        label.font = [UIFont boldSystemFontOfSize:22.0];
+        label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.textColor = [UIColor whiteColor];
+        label.text = [goal title];
+        [[self navigationItem] setTitleView:label];
+        
         [[self navigationItem] setTitle:[savedGoal title]];
         UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc]
                                        initWithTitle:@"Back"
@@ -34,7 +44,10 @@
                                        target:self
                                        action:@selector(cancel:)];
         [cancelItem setTitle:@"Back"];
+        [cancelItem setTintColor:[UIColor whiteColor]];
         [[self navigationItem] setLeftBarButtonItem:cancelItem];
+        
+        [[self tableView] setSeparatorInset:UIEdgeInsetsZero];
     }
     
     return self;
@@ -79,6 +92,8 @@
 {
     [super viewWillAppear:animated];
     [[self tableView] reloadData];
+    
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -107,14 +122,46 @@
     NSString *durationString = [NSString stringWithFormat:@"%.2fh",
                                 [r duration]];
     [[cell durationLabel] setText:durationString];
+    [self setupCellUI:cell forRecord:r];
     
     return cell;
+}
+
+- (void)setupCellUI:(ASRecordCell *)cell forRecord:(ASRecord *)r
+{
+    [[cell durationLabel] setTextColor:[UIColor whiteColor]];
+    [[cell durationLabel] setBackgroundColor:[UIColor colorWithRed:91.0/255.0
+                                                      green:192.0/255.0
+                                                       blue:222.0/255.0 alpha:1.0]];
+    [[[cell durationLabel] layer] setCornerRadius:10.0];
+    
+    [[cell qualityLabel] setTextColor:[UIColor whiteColor]];
+    [[[cell qualityLabel] layer] setCornerRadius:10.0];
+    
+    if ([[[cell qualityLabel] text] isEqualToString:@"High"]) {
+        [[cell qualityLabel] setBackgroundColor:[UIColor colorWithRed:212.0/255.0
+                                                         green:63.0/255.0
+                                                          blue:58.0/255.0 alpha:1.0]];
+    } else if ([[[cell qualityLabel] text] isEqualToString:@"Medium"]) {
+        [[cell qualityLabel] setBackgroundColor:[UIColor colorWithRed:212.0/255.0
+                                                         green:63.0/255.0
+                                                          blue:58.0/255.0 alpha:0.6]];
+    } else {
+        [[cell qualityLabel] setBackgroundColor:[UIColor colorWithRed:212.0/255.0
+                                                         green:63.0/255.0
+                                                          blue:58.0/255.0 alpha:0.2]];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60.0;
+    return 70.0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

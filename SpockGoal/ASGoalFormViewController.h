@@ -24,6 +24,7 @@
     __weak IBOutlet UIButton *finishAtButton;
     __weak IBOutlet UISwitch *remindMeSwitch;
     __weak IBOutlet UIButton *sunButton;
+    __weak IBOutlet UIImageView *timeCheckImage;
     
     __weak ASGoal *savedGoal;
     ASGoalCopy *copyGoal;

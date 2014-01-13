@@ -47,6 +47,15 @@
 		D8E8BD731883483F00DEED0E /* launchImage-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BD6D1883483F00DEED0E /* launchImage-Portrait~ipad.png */; };
 		D8E8BD761883519A00DEED0E /* ringtones128.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BD751883519A00DEED0E /* ringtones128.png */; };
 		D8E8BD78188352CF00DEED0E /* rorIcon40.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BD77188352CF00DEED0E /* rorIcon40.png */; };
+		D8E8BD7B18836AC400DEED0E /* NSDate+TimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E8BD7A18836AC400DEED0E /* NSDate+TimeAgo.m */; };
+		D8E8BD7E18836FF400DEED0E /* navBar.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BD7C18836FF400DEED0E /* navBar.png */; };
+		D8E8BD81188372A200DEED0E /* NSDateTimeAgo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BD80188372A200DEED0E /* NSDateTimeAgo.bundle */; };
+		D8E8BD87188375F500DEED0E /* checkBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BD86188375F500DEED0E /* checkBtn.png */; };
+		D8E8BD8C1883796100DEED0E /* timerBackground-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BD881883796100DEED0E /* timerBackground-568h@2x~iphone.png */; };
+		D8E8BD8D1883796100DEED0E /* timerBackground@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BD891883796100DEED0E /* timerBackground@2x~ipad.png */; };
+		D8E8BD8E1883796100DEED0E /* timerBackground@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BD8A1883796100DEED0E /* timerBackground@2x~iphone.png */; };
+		D8E8BD8F1883796100DEED0E /* timerBackground~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BD8B1883796100DEED0E /* timerBackground~ipad.png */; };
+		D8E8BD911883981700DEED0E /* dash.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E8BD901883981700DEED0E /* dash.png */; };
 		D8F9C6D7187C72440033B5C4 /* ASGoalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F9C6D6187C72440033B5C4 /* ASGoalCell.m */; };
 		D8F9C6D9187C72650033B5C4 /* ASGoalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8F9C6D8187C72650033B5C4 /* ASGoalCell.xib */; };
 		D8F9C6DC187C7AF70033B5C4 /* ASRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F9C6DB187C7AF70033B5C4 /* ASRandom.m */; };
@@ -121,6 +130,16 @@
 		D8E8BD6D1883483F00DEED0E /* launchImage-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launchImage-Portrait~ipad.png"; sourceTree = "<group>"; };
 		D8E8BD751883519A00DEED0E /* ringtones128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ringtones128.png; sourceTree = "<group>"; };
 		D8E8BD77188352CF00DEED0E /* rorIcon40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rorIcon40.png; sourceTree = "<group>"; };
+		D8E8BD7918836AC400DEED0E /* NSDate+TimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TimeAgo.h"; sourceTree = "<group>"; };
+		D8E8BD7A18836AC400DEED0E /* NSDate+TimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TimeAgo.m"; sourceTree = "<group>"; };
+		D8E8BD7C18836FF400DEED0E /* navBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBar.png; sourceTree = "<group>"; };
+		D8E8BD80188372A200DEED0E /* NSDateTimeAgo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NSDateTimeAgo.bundle; sourceTree = "<group>"; };
+		D8E8BD86188375F500DEED0E /* checkBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkBtn.png; sourceTree = "<group>"; };
+		D8E8BD881883796100DEED0E /* timerBackground-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timerBackground-568h@2x~iphone.png"; sourceTree = "<group>"; };
+		D8E8BD891883796100DEED0E /* timerBackground@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timerBackground@2x~ipad.png"; sourceTree = "<group>"; };
+		D8E8BD8A1883796100DEED0E /* timerBackground@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timerBackground@2x~iphone.png"; sourceTree = "<group>"; };
+		D8E8BD8B1883796100DEED0E /* timerBackground~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timerBackground~ipad.png"; sourceTree = "<group>"; };
+		D8E8BD901883981700DEED0E /* dash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dash.png; sourceTree = "<group>"; };
 		D8F9C6D5187C72440033B5C4 /* ASGoalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASGoalCell.h; sourceTree = "<group>"; };
 		D8F9C6D6187C72440033B5C4 /* ASGoalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGoalCell.m; sourceTree = "<group>"; };
 		D8F9C6D8187C72650033B5C4 /* ASGoalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASGoalCell.xib; sourceTree = "<group>"; };
@@ -297,6 +316,9 @@
 		D83DD12C187B57D80092D155 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				D8E8BD80188372A200DEED0E /* NSDateTimeAgo.bundle */,
+				D8E8BD7918836AC400DEED0E /* NSDate+TimeAgo.h */,
+				D8E8BD7A18836AC400DEED0E /* NSDate+TimeAgo.m */,
 				D83DD12D187B58580092D155 /* ASTimeProcess.h */,
 				D83DD12E187B58580092D155 /* ASTimeProcess.m */,
 				D8F9C6DA187C7AF70033B5C4 /* ASRandom.h */,
@@ -355,6 +377,13 @@
 		D8E8BD74188349FB00DEED0E /* AppImages */ = {
 			isa = PBXGroup;
 			children = (
+				D8E8BD901883981700DEED0E /* dash.png */,
+				D8E8BD881883796100DEED0E /* timerBackground-568h@2x~iphone.png */,
+				D8E8BD891883796100DEED0E /* timerBackground@2x~ipad.png */,
+				D8E8BD8A1883796100DEED0E /* timerBackground@2x~iphone.png */,
+				D8E8BD8B1883796100DEED0E /* timerBackground~ipad.png */,
+				D8E8BD86188375F500DEED0E /* checkBtn.png */,
+				D8E8BD7C18836FF400DEED0E /* navBar.png */,
 				D8E8BD77188352CF00DEED0E /* rorIcon40.png */,
 				D8E8BD751883519A00DEED0E /* ringtones128.png */,
 			);
@@ -442,7 +471,10 @@
 				D8DE0A60187ED18A00BAFC3A /* ASRecordCell.xib in Resources */,
 				D8E8BD6218833E6D00DEED0E /* spockGoal-Spotlight@2x~iphone.png in Resources */,
 				D8E8BD78188352CF00DEED0E /* rorIcon40.png in Resources */,
+				D8E8BD87188375F500DEED0E /* checkBtn.png in Resources */,
 				D8E8BD5E18833E6D00DEED0E /* spockGoal-Settings@2x~ipad.png in Resources */,
+				D8E8BD81188372A200DEED0E /* NSDateTimeAgo.bundle in Resources */,
+				D8E8BD8F1883796100DEED0E /* timerBackground~ipad.png in Resources */,
 				D8E8BD6018833E6D00DEED0E /* spockGoal-Settings~ipad.png in Resources */,
 				D8E8BD6318833E6D00DEED0E /* spockGoal-Spotlight~ipad.png in Resources */,
 				D83DD07D187B3BEC0092D155 /* Images.xcassets in Resources */,
@@ -456,12 +488,17 @@
 				D8E8BD761883519A00DEED0E /* ringtones128.png in Resources */,
 				D8DE0A6B1880C22800BAFC3A /* Illuminate.m4r in Resources */,
 				D8DE0A5B187E982900BAFC3A /* ASTimerViewController.xib in Resources */,
+				D8E8BD7E18836FF400DEED0E /* navBar.png in Resources */,
 				D8F9C6D9187C72650033B5C4 /* ASGoalCell.xib in Resources */,
 				D8E8BD6F1883483F00DEED0E /* launchImage-Lanscape~ipad.png in Resources */,
 				D8E8BD701883483F00DEED0E /* launchImage-Portrait-568h@2x~iphone.png in Resources */,
+				D8E8BD8D1883796100DEED0E /* timerBackground@2x~ipad.png in Resources */,
+				D8E8BD8E1883796100DEED0E /* timerBackground@2x~iphone.png in Resources */,
 				D8E8BD731883483F00DEED0E /* launchImage-Portrait~ipad.png in Resources */,
 				D8F9C6FB187CD83C0033B5C4 /* ASTimePickerViewController.xib in Resources */,
+				D8E8BD8C1883796100DEED0E /* timerBackground-568h@2x~iphone.png in Resources */,
 				D8F9C6F0187CAF0F0033B5C4 /* ASGoalFormViewController.xib in Resources */,
+				D8E8BD911883981700DEED0E /* dash.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +526,7 @@
 				D8DE0A64187EDB4E00BAFC3A /* ASRecordListController.m in Sources */,
 				D8F9C6EF187CAF0F0033B5C4 /* ASGoalFormViewController.m in Sources */,
 				D8F9C6F6187CCD2B0033B5C4 /* ASGoal.m in Sources */,
+				D8E8BD7B18836AC400DEED0E /* NSDate+TimeAgo.m in Sources */,
 				D8F9C6FA187CD83C0033B5C4 /* ASTimePickerViewController.m in Sources */,
 				D8F9C6D7187C72440033B5C4 /* ASGoalCell.m in Sources */,
 				D8F9C700187D97D90033B5C4 /* ASGoalCopy.m in Sources */,

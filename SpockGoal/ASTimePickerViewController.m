@@ -38,6 +38,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [[[self navigationController] navigationBar] setTintColor:[UIColor whiteColor]];
+    
     if ([copyGoal everydayStartAt]) {
         [startAtDatePicker setDate:[NSDate dateWithTimeIntervalSinceReferenceDate:[copyGoal everydayStartAt]]];
         [finishAtDatePicker setDate:[NSDate dateWithTimeIntervalSinceReferenceDate:[copyGoal everydayFinishAt]]];

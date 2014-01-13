@@ -145,5 +145,10 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+}
+
 
 @end

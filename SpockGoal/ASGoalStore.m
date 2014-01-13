@@ -246,6 +246,37 @@
     [g setOrderingValue:newOrderValue];
 }
 
+- (ASRecord *)newestRecordOfGoal:(ASGoal *)g
+{
+    ASRecord *resultRecord = nil;
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *e = [[model entitiesByName] objectForKey:@"ASRecord"];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"goal.createdDate == %@", [NSDate dateWithTimeIntervalSinceReferenceDate:[g createdDate]]];
+    NSSortDescriptor *sd = [NSSortDescriptor
+                            sortDescriptorWithKey:@"realStartAt"
+                            ascending:NO];
+    
+    [request setEntity:e];
+    [request setPredicate:pred];
+    [request setSortDescriptors:[NSArray arrayWithObject:sd]];
+    
+    NSError *error;
+    NSArray *result = [context executeFetchRequest:request error:&error];
+    if (!result) {
+        [NSException raise:@"Fetch failed"
+                    format:@"Reason: %@", [error localizedDescription]];
+    }
+    
+    if ([result count] > 0) {
+        resultRecord = [result objectAtIndex:0];
+    }
+    
+    
+    return resultRecord;
+}
+
 
 
 @end
