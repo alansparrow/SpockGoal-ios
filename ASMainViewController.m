@@ -425,12 +425,12 @@ moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
         UIImageView *emptyView = [[UIImageView alloc] initWithFrame:[[self tableView] frame]];
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
             if (UIDeviceOrientationIsPortrait([self interfaceOrientation])) {
-                [emptyView setImage:[UIImage imageNamed:@"emptyView-Portrait.png"]];
+                [emptyView setImage:[UIImage imageNamed:@"emptyGoalView-Portrait.png"]];
             } else {
-                [emptyView setImage:[UIImage imageNamed:@"emptyView-Landscape.png"]];
+                [emptyView setImage:[UIImage imageNamed:@"emptyGoalView-Landscape.png"]];
             }
         } else {
-            [emptyView setImage:[UIImage imageNamed:@"emptyView-Portrait@2x~iphone.png"]];
+            [emptyView setImage:[UIImage imageNamed:@"emptyGoalView-Portrait@2x~iphone.png"]];
         }
         
         /* Customize your view here or load it from a NIB */

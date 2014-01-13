@@ -93,7 +93,36 @@
     [super viewWillAppear:animated];
     [[self tableView] reloadData];
     
-    
+    [self checkForEmptyRecord];
+}
+
+- (void)checkForEmptyRecord
+{
+    if ([[[savedGoal records] allObjects] count] == 0) {
+        //        UIView *emptyView = [[UIView alloc] initWithFrame:self.tableView.frame];
+        UIImageView *emptyView = [[UIImageView alloc] initWithFrame:[[self tableView] frame]];
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            if (UIDeviceOrientationIsPortrait([self interfaceOrientation])) {
+                [emptyView setImage:[UIImage imageNamed:@"emptyRecordView-Portrait.png"]];
+            } else {
+                [emptyView setImage:[UIImage imageNamed:@"emptyRecordView-Landscape.png"]];
+            }
+        } else {
+            [emptyView setImage:[UIImage imageNamed:@"emptyRecordView-Portrait@2x~iphone.png"]];
+        }
+        
+        /* Customize your view here or load it from a NIB */
+        self.tableView.tableHeaderView = emptyView;
+        self.tableView.userInteractionEnabled = NO;
+    } else {
+        self.tableView.tableHeaderView = nil;
+        self.tableView.userInteractionEnabled = YES;
+    }
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [self checkForEmptyRecord];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
