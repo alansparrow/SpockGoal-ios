@@ -147,7 +147,7 @@
     
     if (lastRecord) {
         NSDate *date = [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:
-                        [lastRecord realStartAt]];
+                        [lastRecord realFinishAt]];
         
         
         NSString *lastTime = [date timeAgo];

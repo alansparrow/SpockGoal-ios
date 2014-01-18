@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D83DD066187B3BEC0092D155"
-               BuildableName = "SpockGoal.app"
+               BuildableName = "Spock Goal.app"
                BlueprintName = "SpockGoal"
                ReferencedContainer = "container:SpockGoal.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D83DD066187B3BEC0092D155"
-            BuildableName = "SpockGoal.app"
+            BuildableName = "Spock Goal.app"
             BlueprintName = "SpockGoal"
             ReferencedContainer = "container:SpockGoal.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D83DD066187B3BEC0092D155"
-            BuildableName = "SpockGoal.app"
+            BuildableName = "Spock Goal.app"
             BlueprintName = "SpockGoal"
             ReferencedContainer = "container:SpockGoal.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D83DD066187B3BEC0092D155"
-            BuildableName = "SpockGoal.app"
+            BuildableName = "Spock Goal.app"
             BlueprintName = "SpockGoal"
             ReferencedContainer = "container:SpockGoal.xcodeproj">
          </BuildableReference>
