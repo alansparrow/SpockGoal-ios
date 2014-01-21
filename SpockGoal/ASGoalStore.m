@@ -12,6 +12,9 @@
 #import "ASRandom.h"
 #import "ASTimeProcess.h"
 
+NSString * const ASGoalStoreUpdateNotification =
+@"ASGoalStoreUpdateNotification";
+
 @implementation ASGoalStore
 
 + (ASGoalStore *)sharedStore
@@ -29,23 +32,78 @@
     return [self sharedStore];
 }
 
+- (void)contentChange:(NSNotification *)note
+{
+    // merge changes into context
+    [context mergeChangesFromContextDidSaveNotification:note];
+    
+    [[NSOperationQueue mainQueue]
+     addOperationWithBlock:^{
+         NSNotification *updateNote =
+         [NSNotification notificationWithName:ASGoalStoreUpdateNotification
+                                       object:nil];
+         [[NSNotificationCenter defaultCenter]
+          postNotification:updateNote];
+     }];
+}
+
 - (id)init
 {
     self = [super init];
     if (self) {
+        // Register as an observer of NSPersistentStoreDidImportUbiquitousContentChangesNotification
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(contentChange:)
+         name:NSPersistentStoreDidImportUbiquitousContentChangesNotification
+         object:nil];
+        
+        
+        
         // Read in SpockGoal.xcdatamodeld
         model = [NSManagedObjectModel mergedModelFromBundles:nil];
         NSPersistentStoreCoordinator *psc =
         [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
         
-        NSString *path = [self goalArchivePath];
-        NSURL *storeURL = [NSURL fileURLWithPath:path];
+        // iCloud
+        // Find the location of the ubiquity container on the local filesystem
+        NSFileManager *fm = [NSFileManager defaultManager];
+        // Return the location of the ubiquity container on the device
+        NSURL *ubContainer = [fm URLForUbiquityContainerIdentifier:nil];
+        
+        // Construct the dictionary that tells Core Data where the
+        // transaction log should be stored
+        NSMutableDictionary *options = [NSMutableDictionary
+                                        dictionary];
+        [options setObject:@"SpockGoal"
+                    forKey:NSPersistentStoreUbiquitousContentNameKey];
+        [options setObject:ubContainer
+                    forKey:NSPersistentStoreUbiquitousContentURLKey];
+        
+        
+        
+        //NSString *path = [self goalArchivePath];
+        //NSURL *storeURL = [NSURL fileURLWithPath:path];
+        
+        // Specify a new directory and create it in the ubiquity
+        // container
+        NSURL *nosyncDir = [ubContainer
+                            URLByAppendingPathComponent:@"spockgoal.nosync"];
+        [fm createDirectoryAtURL:nosyncDir
+     withIntermediateDirectories:YES
+                      attributes:nil
+                           error:nil];
+        
+        // Specify the new file to store Core Data's SQLite file
+        NSURL *storeURL = [nosyncDir
+                        URLByAppendingPathComponent:@"spockgoal.db"];
+        
         NSError *error = nil;
         
         if (![psc addPersistentStoreWithType:NSSQLiteStoreType
                                configuration:nil
                                          URL:storeURL
-                                     options:nil
+                                     options:options
                                        error:&error]) {
             [NSException raise:@"Open failed"
                         format:@"Reason: %@", [error localizedDescription]];

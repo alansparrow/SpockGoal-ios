@@ -12,6 +12,8 @@
 @class ASGoal;
 @class ASRecord;
 
+extern NSString * const ASGoalStoreUpdateNotification;
+
 @interface ASGoalStore : NSObject
 
 {

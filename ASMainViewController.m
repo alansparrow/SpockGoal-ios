@@ -28,8 +28,18 @@
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         [self setupTableViewUI];
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(storeUpdated:)
+         name:ASGoalStoreUpdateNotification
+         object:nil];
     }
     return self;
+}
+
+- (void)storeUpdated:(NSNotification *)note
+{
+    [[self tableView] reloadData];
 }
 
 - (void)setupTableViewUI
